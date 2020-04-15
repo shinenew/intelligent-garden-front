@@ -1,0 +1,44 @@
+<template>
+  <div>
+    {{name}}组件
+  </div>
+</template>
+
+<script lang='ts'>
+import { Component, Vue, Prop, Emit } from "vue-property-decorator";
+
+@Component
+export default class {{name}}Component extends Vue {
+  // eg:
+  // /**
+  //  * 定义data，对应data中的内容
+  //  */
+  // private dataDemo!: string;
+
+  // /**
+  //  * 定义prop，对应prop中的内容
+  //  */
+  // @Prop()
+  // private propDemo!: string;
+
+  // /**
+  //  * 计算属性，对应computed中的内容
+  //  */
+  // get computedDemo() {
+  //   return this.propDemo + "——计算属性";
+  // }
+
+  // /**
+  //  * 定义emit，对应emit中的内容
+  //  */
+  // @Emit()
+  // private emitDemo(param: string) {}
+
+  // /**
+  //  * 定义方法，对应method中的内容
+  //  */
+  // private pFunction(param: string) {
+  //   console.log(param);
+  // }
+}
+</script>
