@@ -1,6 +1,8 @@
 <template>
-  <div>
-    Login视图
+  <div class="main loginPg">
+    <div class="pageBox">
+      <div class="tit"><h6>园林小筑-养护端</h6></div>
+    </div>
   </div>
 </template>
 
