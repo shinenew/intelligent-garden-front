@@ -27,6 +27,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Swiper from "swiper";
 import "swiper/css/swiper.css";
+import $ from 'jquery';
 
 @Component({
   components: {
@@ -58,6 +59,10 @@ export default class Demo extends Vue {
         }
       });
     }, 500);
+  }
+
+  created() {
+    console.log($('body').width());
   }
 }
 </script>
