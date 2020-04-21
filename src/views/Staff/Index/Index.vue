@@ -1,6 +1,23 @@
 <template>
-  <div>
-    Index视图
+  <div class="main staffHome">
+    <header>
+      <a href="javascript:void(0)" class="icon arr">&#xe626;</a>
+      <h1>首页</h1>
+    </header>
+    <div class="pageBox">
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+    </div>
+    <footer>2</footer>
   </div>
 </template>
 
