@@ -1,6 +1,43 @@
 <template>
-  <div>
-    Workbench视图
+  <div class="main workBench">
+    <header>
+      <h1>我的</h1>
+    </header>
+    <div class="info">
+      <div class="pic">
+        <img src="../../../assets/img/user.png" />
+      </div>
+      <dl>
+        <dt>张三</dt>
+        <dd>123456789123</dd>
+      </dl>
+    </div>
+    <div class="pageBox">
+      <div class="linkList">
+        <ul>
+          <li>
+            <a href="javascript:void(0);">
+              <p>关于我们</p>
+              <i class="icon">&#xe61e;</i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <nav>
+      <a href="javascript:void(0);">
+        <i class="icon">&#xe620;</i>
+        <p>首页</p>
+      </a>
+      <a href="javascript:void(0);" class="cu">
+        <i class="icon">&#xe61d;</i>
+        <p>工作台</p>
+      </a>
+      <a href="javascript:void(0);">
+        <i class="icon">&#xe61c;</i>
+        <p>我的</p>
+      </a>
+    </nav>
   </div>
 </template>
 

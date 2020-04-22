@@ -14,7 +14,7 @@
  address,caption,cite,code,dfn,i,em,strong,th,var {font-weight: normal;font-style: normal;}
  ol,ul {list-style: none;}
  a{text-decoration:none;color:#414141;transition: all .5s;}
- a:hover{text-decoration:none;color:#b11d2d;}
+ a:hover{text-decoration:none;color:#10BFA7;}
  a:focus{outline:none; text-decoration:none;}
  a:active,a:hover{outline:0; text-decoration:none;}
  caption,th {text-align: left;font-weight: normal;}
@@ -63,16 +63,31 @@
 html {-webkit-overflow-scrolling: touch;background: #fafafa;height: 100%;display: block;}
 body {font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;font-size: .3rem;line-height: 1.5;text-align: center;color: #666;position: relative;text-align: left;background: #fafafa;overflow-x: hidden;display: block;height: 100%;}
 .clear:after {clear: both;content: '';display: block;}
-.icon {font-family: 'icon';font-size: .35rem;color:#d10000;}
+.icon {font-family: 'icon';font-size: .35rem;}
 #app {height:100%;}
 .main{position: relative;z-index:1;height:100%;}
-.main header,.main footer{position: fixed;z-index:2;width:100%;left:0;}
-.main header{top:0;}
+.main header,.main footer{position: fixed;z-index:5;width:100%;left:0;}
+.main header{top:0;height:1rem;box-shadow:0 1px 5px #ccc;background:#fff;}
 .main footer{bottom:0;}
-header a.arr{position: absolute;left:0;top:50%;}
-header h1{text-align:center;}
-.pageBox{width:100%;padding:1rem 5%;}
-/* .icon {width: 1em;height: 1em;vertical-align: -0.15em;fill: currentColor;overflow: hidden;} */
+header a.arr{position: absolute;left:5%;color:#333;top: 50%;z-index:2;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+header .headerCon{position: relative;z-index:2;}
+header h1{text-align:center;height:1rem;line-height:1rem;}
+.pageBox{width:100%;padding:1.2rem 5% 1.4rem;position: relative;z-index:1;}
+nav{position:fixed;z-index:5;bottom:0;left:0;width:100%;border-top:1px solid #eee;background:#fff;height:1.2rem;}
+nav a{display:inline-block;width:33.3%;text-align:center;height:100%;}
+nav a i.icon{color:#a6b2c4;font-size:.5rem;display:block;padding-top:.05rem;}
+nav a p{font-size:.25rem;}
+nav a.cu i.icon{
+    background-image:-webkit-linear-gradient(left,#8FD3F4,#39F7CD);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+nav a.cu p{color:#10BFA7;}
 
 @font-face {
   font-family:'iconfont';
@@ -244,6 +259,7 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 }
 .btn:hover {color:#fff;}
 .btnSmall {height: .5rem;line-height: .5rem;font-size: .25rem;padding: 0 5%;}
+.btnMiddel {height: .6rem;line-height: .6rem;font-size: .28rem;padding: 0 7%;}
 .btnBig {height: .8rem;line-height: .8rem;font-size: .35rem;display: block;width: 100%;text-align: center;}
 .btnL {border-radius: .1rem 0 0 .1rem;}
 .btnC {border-radius: 0 0 0 0;}
@@ -312,3 +328,68 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 .loginPg .tip{font-size:.25rem;color:#bbb;}
 .loginPg .tip a {color: #307FD1;}
 .loginPg .btns{margin-bottom:10%;}
+
+
+/*个人首页*/
+.staffHome{}
+.staffHome .pageBox{padding-left:0;padding-right:0;}
+.staffHome .scan{padding:0 5% 3%;}
+.staffHome .scan img{width:100%;display:block;}
+.staffHome .tab{background:#fff;border-bottom:1px solid #eee;margin-bottom:3%;}
+.staffHome .tab ul:after{clear:both;content:'';display:block;}
+.staffHome .tab ul li{float:left;width:50%;text-align:center;font-size:.3rem;position: relative;z-index:1;}
+.staffHome .tab ul li span{display:inline-block;height:1rem;line-height:1rem;position: relative;z-index:1;}
+.staffHome .tab ul li span em{position: absolute;z-index:1;left:105%;top:50%;background:#FF5F5F;border-radius: 1rem;height:.4rem;color:#fff;padding:0 .15rem;font-size:.25rem;line-height:.4rem;text-align:right;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+.staffHome .tab ul li.cu{color:#1DC39E;}
+.staffHome .tab ul li.cu:after{content:'';width:100%;height:.05rem;background:#1DC39E;display:block;left:0;bottom:0;position: absolute;z-index:1;}
+.staffHome .list{padding:0 5%;}
+.staffHome .list ul li{background:#fff;padding:4% 4%;box-shadow:0 1px 5px #dfe3e8;border-radius: .1rem;position: relative;z-index:1;margin-bottom:5%;}
+.staffHome .list ul li dl{}
+.staffHome .list ul li dl dt{color:#333;font-size:.25rem;font-weight:bold;}
+.staffHome .list ul li dl dt b{display:inline-block;background:#FFF2EE;border:1px solid #FDA084;padding:.05rem .2rem;font-weight:normal;color:#FDA084;margin-left:5%;}
+.staffHome .list ul li dl dd{color:#666;font-size:.25rem;padding-right:.3rem;}
+.staffHome .list ul li dl dd p:nth-child(2){color:#999;}
+
+.staffHome .list ul li a.btn{position: absolute;right:3%;bottom:10%;}
+
+/*我的*/
+.my .pageBox{padding-top:5%;}
+.my header{position: relative;box-shadow:none;
+    background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 247, 205, 1)), to(rgba(143, 211, 244, 1)));
+    background-image: -webkit-linear-gradient(right, rgb(57, 247, 205, 1), rgba(143, 211, 244, 1));
+    background-image: -o-linear-gradient(right, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
+    background-image: linear-gradient(to left, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
+}
+.my header h1{color:#fff;}
+.my .info{padding:5% 10%;position: relative;z-index:1;
+    background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 247, 205, 1)), to(rgba(143, 211, 244, 1)));
+    background-image: -webkit-linear-gradient(right, rgb(57, 247, 205, 1), rgba(143, 211, 244, 1));
+    background-image: -o-linear-gradient(right, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
+    background-image: linear-gradient(to left, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
+}
+.my .info:after{clear:both;content:'';display:block;}
+.my .info .pic{width:20%;}
+.my .info .pic img{width:100%;}
+.my .info dl{position: absolute;z-index:1;left:30%;color:#fff;top:50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.my .linkList{border-radius: .1rem;box-shadow:0 1px 5px #dfe3e8;overflow:hidden;}
+.my .linkList ul li{border-bottom:1px solid #eaeaea;background:#fff;}
+.my .linkList ul li:last-child{border:0;}
+.my .linkList ul li a{display:block;position: relative;z-index:1;}
+.my .linkList ul li a p{display:block;padding:4% 5%;}
+.my .linkList ul li a i.icon{position: absolute;z-index:1;right:5%;top:50%;color:#999;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
