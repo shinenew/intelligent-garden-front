@@ -26,14 +26,14 @@
           </li>
         </ul>
       </div>
-      <div class="list">
+      <div class="taskList">
         <ul>
           <li>
             <a href="javascript:void(0);" class="btn btnMiddel">查看任务</a>
             <dl>
               <dt>
                 沙坪坝森林公园
-                <b class="date">05-08日</b>
+                <b>05-08日</b>
               </dt>
               <dd>
                 <p>A区</p>
@@ -46,7 +46,7 @@
             <dl>
               <dt>
                 沙坪坝森林公园
-                <b class="date">05-08日</b>
+                <b>05-08日</b>
               </dt>
               <dd>
                 <p>A区</p>
@@ -59,7 +59,20 @@
             <dl>
               <dt>
                 沙坪坝森林公园
-                <b class="date">05-08日</b>
+                <b>05-08日</b>
+              </dt>
+              <dd>
+                <p>A区</p>
+                <p>清理树枝，并处理虫害</p>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <a href="javascript:void(0);" class="btn btnMiddel">查看任务</a>
+            <dl>
+              <dt>
+                沙坪坝森林公园
+                <b>05-08日</b>
               </dt>
               <dd>
                 <p>A区</p>

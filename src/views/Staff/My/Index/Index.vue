@@ -5,7 +5,7 @@
     </header>
     <div class="info">
       <div class="pic">
-        <img src="../../../../../assets/img/user.png" />
+        <img src="../../../../assets/img/user.png" />
       </div>
       <dl>
         <dt>张三</dt>

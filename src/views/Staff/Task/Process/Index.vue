@@ -1,6 +1,52 @@
 <template>
-  <div>
-    Process视图
+  <div class="main processPage">
+    <header>
+      <div class="headerCon">
+        <a href="javascript:void(0)" class="icon arr">&#xe626;</a>
+        <h1>填写评价</h1>
+      </div>
+    </header>
+    <div class="pageBox">
+      <div class="form">
+        <label class="mod">
+          <i>园区名称</i>
+          <em class="gray">请选样园区</em>
+          <select>
+            <option>园区一</option>
+            <option>园区二</option>
+          </select>
+          <div class="icon modDot">&#xe61e;</div>
+        </label>
+        <label class="mod">
+          <i>区域</i>
+          <em class="gray">请选择区域</em>
+          <select>
+            <option>A</option>
+            <option>B</option>
+          </select>
+          <div class="icon modDot">&#xe61e;</div>
+        </label>
+        <label class="mod">
+          <i>植物/建筑名称</i>
+          <input type="text" placeholder="请填写" class="text" />
+        </label>
+        <label class="mod">
+          <i>评价内容</i>
+          <input type="text" placeholder="请填写评价内容" class="text" />
+        </label>
+        <label class="mod modFull">
+          <i>上传图片</i>
+          <em>
+            <span class="uploadPic">
+              <a href="javascript:void(0)" class="upContrl"></a>
+            </span>
+          </em>
+        </label>
+      </div>
+    </div>
+    <footer>
+      <a href="javascript:void(0);" class="btn btnBig">提交</a>
+    </footer>
   </div>
 </template>
 

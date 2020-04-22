@@ -77,7 +77,7 @@ header a.arr{position: absolute;left:5%;color:#333;top: 50%;z-index:2;
 }
 header .headerCon{position: relative;z-index:2;}
 header h1{text-align:center;height:1rem;line-height:1rem;}
-.pageBox{width:100%;padding:1.2rem 5% 1.4rem;position: relative;z-index:1;}
+.pageBox{width:100%;padding:1.3rem 5% 1.4rem;position: relative;z-index:1;}
 nav{position:fixed;z-index:5;bottom:0;left:0;width:100%;border-top:1px solid #eee;background:#fff;height:1.2rem;}
 nav a{display:inline-block;width:33.3%;text-align:center;height:100%;}
 nav a i.icon{color:#a6b2c4;font-size:.5rem;display:block;padding-top:.05rem;}
@@ -88,6 +88,8 @@ nav a.cu i.icon{
     -webkit-text-fill-color:transparent;
 }
 nav a.cu p{color:#10BFA7;}
+
+footer{width:100%;padding:5%;background:#fafafa;}
 
 @font-face {
   font-family:'iconfont';
@@ -259,7 +261,7 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 }
 .btn:hover {color:#fff;}
 .btnSmall {height: .5rem;line-height: .5rem;font-size: .25rem;padding: 0 5%;}
-.btnMiddel {height: .6rem;line-height: .6rem;font-size: .28rem;padding: 0 7%;}
+.btnMiddel {height: .6rem;line-height: .6rem;font-size: .28rem;padding: 0 5%;}
 .btnBig {height: .8rem;line-height: .8rem;font-size: .35rem;display: block;width: 100%;text-align: center;}
 .btnL {border-radius: .1rem 0 0 .1rem;}
 .btnC {border-radius: 0 0 0 0;}
@@ -267,16 +269,16 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 
 
 /*form表单*/
-.form {margin-bottom: 5%;background:#fff;box-shadow:0 1px 5px #ABB9C7;border-radius: .1rem;}
+.form {margin-bottom: 5%;background:#fff;box-shadow:0 1px 5px #ddd;border-radius: .1rem;padding:0 5%;}
 .mod {position: relative;z-index: 1;display: block;font-size: .25rem;border-bottom:1px solid #efefef}
 .mod:last-child {border-bottom: 0;}
-.mod i {position: absolute;left:0;top: 0;color: #333;padding-left: .2rem;padding-top: 5%;padding-bottom: 5%;z-index: 1;}
+.mod i {position: absolute;left:0;top: 0;color: #999;padding-left:0;padding-top: 5%;padding-bottom: 5%;z-index: 1;}
 .mod i b {position: absolute;z-index: 1;left: -.05rem;color: #F85B5B;}
-.mod em {display: block;width: 100%;position: relative;z-index: 2;text-align: right;color: #666;padding-left: 2rem;padding-right: 8%;padding-top: 5%;padding-bottom: 5%;}
+.mod em {display: block;width: 100%;position: relative;z-index: 2;text-align: left;color: #666;padding-left: 2.5rem;padding-right: 8%;padding-top: 5%;padding-bottom: 5%;}
 .mod em.gray {color: #ccc;}
 .mod em a {color: #666;}
 .mod em b.unbind {font-weight: normal;padding: 1% 3%;background: #5fb2ff;color: #fff;border-radius: .05rem;margin-left: 5%;}
-.mod .modDot {position: absolute;right: 3%;top: 50%;
+.mod .modDot {position: absolute;right: 3%;top: 50%;color:#ccc;
     -webkit-transform: translate(0, -50%);
     -moz-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
@@ -288,8 +290,44 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
 }
+.modFull{}
+.modFull i{position: relative;left:0;top:0;display:block;}
+.modFull em{padding-left:0;padding-top:0;padding-right:0;}
+.modFull em:after{clear:both;content:'';display:block;}
+.modFull em b.pic{width:32%;display:block;float:left;margin-right:1.5%;margin-bottom:2%;}
+.modFull em b.pic:nth-child(3n){margin-right:0;}
+.modFull em b.pic img{width:100%;display:block;}
+
+
+/*图片上传*/
+.uploadPic{margin-bottom:5%;display:block;}
+.uploadPic a.upContrl{display:block;width:100%;background:#e5e7ea;height:1.8rem;border:1px solid #ddd;position: relative;z-index:1;}
+.uploadPic a.upContrl:before,
+.uploadPic a.upContrl:after{display:block;content:'';width:1rem;height:1px;background:#aaa;position: absolute;z-index:1;left:50%;top:50%;}
+.uploadPic a.upContrl:before{
+  -webkit-transform-origin:50% 50%;
+  -moz-transform-origin:50% 50%;
+  -ms-transform-origin:50% 50%;
+  transform-origin:50% 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.uploadPic a.upContrl:after{
+  -webkit-transform-origin:center center;
+  -moz-transform-origin:center center;
+  -ms-transform-origin:center center;
+  transform-origin:center center;
+  -webkit-transform:translate(-50%,-50%) rotate(90deg) ;
+  -moz-transform: translate(-50%,-50%) rotate(90deg);
+  -ms-transform: translate(-50%,-50%) rotate(90deg);
+  transform: translate(-50%,-50%) rotate(90deg);
+}
+
+
 /*text*/
-.mod input.text {height: 1rem;border: 0;background: transparent;text-align: right;width: 100%;padding: 0 8% 0 2rem;position: relative;z-index: 2;}
+.mod input.text {height: 1rem;border: 0;background: transparent;text-align: left;width: 100%;padding: 0 8% 0 2.5rem;position: relative;z-index: 2;}
 .mod input.text:focus {outline: none;}
 .mod input.textYzm {padding: 0 37% 0 1.5rem;}
 /*select*/
@@ -297,6 +335,44 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 /*textarea*/
 .modTextarea i {position: relative;display: block;padding-bottom: 3%;}
 .modTextarea textarea {border: 0;height: 1rem;background: transparent;text-align: left;width: 87%;margin: 0 8% 5% 5%;}
+
+/*tab*/
+.tab{background:#fff;border-bottom:1px solid #eee;margin-bottom:3%;}
+.tab ul:after{clear:both;content:'';display:block;}
+.tab ul li{float:left;width:50%;text-align:center;font-size:.3rem;position: relative;z-index:1;}
+.tab ul li span{display:inline-block;height:1rem;line-height:1rem;position: relative;z-index:1;}
+.tab ul li span em{position: absolute;z-index:1;left:105%;top:50%;background:#FF5F5F;border-radius: 1rem;height:.4rem;color:#fff;padding:0 .15rem;font-size:.25rem;line-height:.4rem;text-align:right;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.tab ul li.cu{color:#1DC39E;}
+.tab ul li.cu:after{content:'';width:100%;height:.05rem;background:#1DC39E;display:block;left:0;bottom:0;position: absolute;z-index:1;}
+
+/*taskList*/
+.taskList{padding:0 5%;}
+.taskList ul li{background:#fff;padding:4% 4%;box-shadow:0 1px 5px #dfe3e8;border-radius: .1rem;position: relative;z-index:1;margin-bottom:5%;}
+.taskList ul li dl{}
+.taskList ul li dl dt{color:#333;font-size:.25rem;font-weight:bold;}
+.taskList ul li dl dt b{display:inline-block;background:#FFF2EE;border:1px solid #FDA084;padding:.05rem .2rem;font-weight:normal;color:#FDA084;margin-left:5%;}
+.taskList ul li dl dt b.blue{color:#5481DC;background:#dee8f0;border:1px solid #5481DC;}
+.taskList ul li dl dt b.green{color:#1DC39E;background:#deeded;border:1px solid #1DC39E;}
+.taskList ul li dl dd{color:#666;font-size:.25rem;padding-right:.3rem;}
+.taskList ul li dl dd p:nth-child(2){color:#999;}
+
+.taskList ul li a.btn{position: absolute;right:3%;bottom:10%;}
+.taskList ul li .date{position: absolute;right:5%;top:50%;font-size:.25rem;text-align: right;color:#999;;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+/*关于我们*/
+.aboutPage{}
+.aboutPage .aboutTxt{background:#fff;border-radius: .1rem;padding:3% 5%;box-shadow:0 1px 5px #dfe3e8;}
+.aboutPage .aboutTxt img{width:100%;margin:0 5%;}
 
 /*登录界面*/
 .loginPg{position: relative;z-index:1;height:100%;background-image:url(../img/login-bg.png);background-size:100% auto;background-position:center top;background-repeat: no-repeat;background-color:#fff;padding:0 15%;text-align:left;
@@ -322,12 +398,14 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
     background-image: linear-gradient(to left, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
 }
 .loginPg .tit h6{font-size:.6rem;}
-.loginPg .form{background:transparent;border:0;box-shadow:none;margin-bottom:10%}
+.loginPg .form{background:transparent;border:0;box-shadow:none;margin-bottom:10%;padding:0;}
 .loginPg .form .mod:last-child{border-bottom:1px solid #efefef;}
 .loginPg .form .mod input.text{text-align:left;padding: 0 8% 0 .6rem;}
 .loginPg .tip{font-size:.25rem;color:#bbb;}
 .loginPg .tip a {color: #307FD1;}
 .loginPg .btns{margin-bottom:10%;}
+.loginPg .form .mod .btn{right:0;}
+
 
 
 /*个人首页*/
@@ -335,28 +413,7 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 .staffHome .pageBox{padding-left:0;padding-right:0;}
 .staffHome .scan{padding:0 5% 3%;}
 .staffHome .scan img{width:100%;display:block;}
-.staffHome .tab{background:#fff;border-bottom:1px solid #eee;margin-bottom:3%;}
-.staffHome .tab ul:after{clear:both;content:'';display:block;}
-.staffHome .tab ul li{float:left;width:50%;text-align:center;font-size:.3rem;position: relative;z-index:1;}
-.staffHome .tab ul li span{display:inline-block;height:1rem;line-height:1rem;position: relative;z-index:1;}
-.staffHome .tab ul li span em{position: absolute;z-index:1;left:105%;top:50%;background:#FF5F5F;border-radius: 1rem;height:.4rem;color:#fff;padding:0 .15rem;font-size:.25rem;line-height:.4rem;text-align:right;
-    -webkit-transform: translate(0, -50%);
-    -moz-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%);
-}
 
-.staffHome .tab ul li.cu{color:#1DC39E;}
-.staffHome .tab ul li.cu:after{content:'';width:100%;height:.05rem;background:#1DC39E;display:block;left:0;bottom:0;position: absolute;z-index:1;}
-.staffHome .list{padding:0 5%;}
-.staffHome .list ul li{background:#fff;padding:4% 4%;box-shadow:0 1px 5px #dfe3e8;border-radius: .1rem;position: relative;z-index:1;margin-bottom:5%;}
-.staffHome .list ul li dl{}
-.staffHome .list ul li dl dt{color:#333;font-size:.25rem;font-weight:bold;}
-.staffHome .list ul li dl dt b{display:inline-block;background:#FFF2EE;border:1px solid #FDA084;padding:.05rem .2rem;font-weight:normal;color:#FDA084;margin-left:5%;}
-.staffHome .list ul li dl dd{color:#666;font-size:.25rem;padding-right:.3rem;}
-.staffHome .list ul li dl dd p:nth-child(2){color:#999;}
-
-.staffHome .list ul li a.btn{position: absolute;right:3%;bottom:10%;}
 
 /*我的*/
 .my .pageBox{padding-top:5%;}
@@ -393,3 +450,51 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
 }
+
+/*工作台*/
+.workBench{}
+.workBench .block{background:#fff;border-radius: .1rem;box-shadow:0 1px 5px #dfe3e8;margin-bottom:5%;padding:3% 5%;}
+.workBench .block .hd{margin-bottom:3%;}
+.workBench .block .hd h3{color:#666;position: relative;z-index:1;padding-left:.16rem;}
+.workBench .block .hd h3:after{position: absolute;left:0;top:50%;width:.05rem;height:70%;background:#39F7CD;content:'';
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+.workBench .block .bd{}
+.workBench .block .bd .list a{display:inline-block;width:33.3%;text-align:center;}
+.workBench .block .bd .list a p{font-size:.25rem;color:#666;}
+
+.workBench .taskLnk .bd .list{text-align:center;}
+.workBench .taskLnk .bd .list a b{width:1.5rem;height:1.5rem;display:block;margin:0 auto 5%;line-height:1.5rem;border-radius: 50%;color:#fff;font-weight:normal;font-size:.4rem;}
+.workBench .taskLnk .bd .list a:nth-child(1) b{
+    background-image: -webkit-gradient(linear, right top, left top, from(rgba(246, 211, 101, 1)), to(rgba(253, 160, 133, 1)));
+    background-image: -webkit-linear-gradient(right, rgb(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    background-image: -o-linear-gradient(right, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    background-image: linear-gradient(to left, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+}
+.workBench .taskLnk .bd .list a:nth-child(2) b{
+    background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 247, 205, 1)), to(rgba(143, 211, 244, 1)));
+    background-image: -webkit-linear-gradient(right, rgb(57, 247, 205, 1), rgba(143, 211, 244, 1));
+    background-image: -o-linear-gradient(right, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
+    background-image: linear-gradient(to left, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
+}
+.workBench .dangerousLnk .bd .list a i.icon,
+.workBench .parkLnk .bd .list a i.icon
+{color:#1DC39E;font-size:.7rem;}
+
+
+/*任务管理*/
+.taskListPage .pageBox{padding-top:1rem;padding-left:0;padding-right:0;}
+
+/*任务详情*/
+.taskDetailPage{}
+.taskDetailPage .pageBox{padding-bottom:1.7rem;}
+.taskDetailPage .form{position: relative;z-index:1;padding:0 5%;}
+.taskDetailPage .form .corner{position: absolute;z-index:2;right:-1%;top:-1%;width:20%;}
+.taskDetailPage .form .corner img{width:100%;display:block;}
+
+/*填写评价*/
+.processPage{}

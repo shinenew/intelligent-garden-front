@@ -1,27 +1,66 @@
 <template>
   <div class="main workBench">
     <header>
-      <h1>我的</h1>
-    </header>
-    <div class="info">
-      <div class="pic">
-        <img src="../../../assets/img/user.png" />
+      <div class="headerCon">
+        <a href="javascript:void(0)" class="icon arr">&#xe626;</a>
+        <h1>工作台</h1>
       </div>
-      <dl>
-        <dt>张三</dt>
-        <dd>123456789123</dd>
-      </dl>
-    </div>
+    </header>
     <div class="pageBox">
-      <div class="linkList">
-        <ul>
-          <li>
+      <div class="block taskLnk">
+        <div class="hd">
+          <h3>任务管理</h3>
+        </div>
+        <div class="bd">
+          <div class="list">
             <a href="javascript:void(0);">
-              <p>关于我们</p>
-              <i class="icon">&#xe61e;</i>
+              <b>52</b>
+              <p>未完成任务</p>
             </a>
-          </li>
-        </ul>
+            <a href="javascript:void(0);">
+              <b>52</b>
+              <p>已完成任务</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="block dangerousLnk">
+        <div class="hd">
+          <h3>险情管理</h3>
+        </div>
+        <div class="bd">
+          <div class="list">
+            <a href="javascript:void(0);">
+              <i class="icon">&#xe623;</i>
+              <p>填写应急处理</p>
+            </a>
+            <a href="javascript:void(0);">
+              <i class="icon">&#xe621;</i>
+              <p>应急历史记录</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="block parkLnk">
+        <div class="hd">
+          <h3>园区管理</h3>
+        </div>
+        <div class="bd">
+          <div class="list">
+            <a href="javascript:void(0);">
+              <i class="icon">&#xe61f;</i>
+              <p>物品列表</p>
+            </a>
+            <a href="javascript:void(0);">
+              <i class="icon">&#xe622;</i>
+              <p>历史养护记录</p>
+            </a>
+            <a href="javascript:void(0);">
+              <i class="icon">&#xe624;</i>
+              <p>填写评价</p>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <nav>
