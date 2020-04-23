@@ -300,7 +300,7 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 
 
 /*图片上传*/
-.uploadPic{margin-bottom:5%;display:block;}
+.uploadPic{margin-bottom:5%;display:block;float:left;width:100%;}
 .uploadPic a.upContrl{display:block;width:100%;background:#e5e7ea;height:1.8rem;border:1px solid #ddd;position: relative;z-index:1;}
 .uploadPic a.upContrl:before,
 .uploadPic a.upContrl:after{display:block;content:'';width:1rem;height:1px;background:#aaa;position: absolute;z-index:1;left:50%;top:50%;}
@@ -498,3 +498,24 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 
 /*填写评价*/
 .processPage{}
+
+/*应急处理详情*/
+.urgViewPage{}
+.urgViewPage .form .tit{color:#FF8181;font-size:.25rem;padding:5% 0% 0;}
+.urgViewPage .form .mod em img{width:100%;display:block;}
+
+/*应急历史记录*/
+.urgListPage{}
+.urgListPage .list ul li{padding:3% 5%;background:#fff;box-shadow:0 1px 5px #ddd;border-radius: .1rem;position: relative;z-index:1;margin-bottom:5%;}
+.urgListPage .list ul li a{display:block;}
+.urgListPage .list ul li:last-child{margin-bottom:0;}
+.urgListPage .list ul li .cor{position: absolute;z-index:2;right:-1%;top:-2%;width:20%;}
+.urgListPage .list ul li .cor img{width:100%;display:block;}
+.urgListPage .list ul li dl{}
+.urgListPage .list ul li dl dt{color:#333;font-weight:bold;margin-bottom:2%;}
+.urgListPage .list ul li dl dd{font-size:.25rem;color:#999;}
+.urgListPage .list ul li dl dd .label{margin-bottom:2%;}
+.urgListPage .list ul li dl dd .label b{display:inline-block;padding:0.5% 2%;border:1px solid #ddd;background:#efefef;color:#999;font-weight:normal;font-size:.25rem;}
+.urgListPage .list ul li dl dd .label b.green{border:1px solid #1DC39E;background:#ebfaf6;color:#1DC39E;}
+.urgListPage .list ul li dl dd .label b.blue{border:1px solid #5481DC;background:#ebf4fa;color:#5481DC;}
+.urgListPage .list ul li dl dd .txt{margin-bottom:2%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;width:100%;}

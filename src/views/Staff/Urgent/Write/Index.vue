@@ -56,6 +56,15 @@
         <label class="mod modFull">
           <i>现场图片</i>
           <em>
+            <b class="pic">
+              <img src="../../../../assets/img/def-pic.png" />
+            </b>
+            <b class="pic">
+              <img src="../../../../assets/img/def-pic.png" />
+            </b>
+            <b class="pic">
+              <img src="../../../../assets/img/def-pic.png" />
+            </b>
             <span class="uploadPic">
               <a href="javascript:void(0)" class="upContrl"></a>
             </span>
