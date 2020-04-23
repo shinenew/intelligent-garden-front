@@ -519,3 +519,123 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 .urgListPage .list ul li dl dd .label b.green{border:1px solid #1DC39E;background:#ebfaf6;color:#1DC39E;}
 .urgListPage .list ul li dl dd .label b.blue{border:1px solid #5481DC;background:#ebf4fa;color:#5481DC;}
 .urgListPage .list ul li dl dd .txt{margin-bottom:2%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;width:100%;}
+
+/*首页*/
+.indexPage{}
+.indexPage header{position: relative;box-shadow:none;color:#fff;
+    background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 247, 205, 1)), to(rgba(143, 211, 244, 1)));
+    background-image: -webkit-linear-gradient(right, rgb(57, 247, 205, 1), rgba(143, 211, 244, 1));
+    background-image: -o-linear-gradient(right, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
+    background-image: linear-gradient(to left, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
+}
+.indexPage .search{background:#fff;padding:3% 5%;position: relative;z-index:1;}
+.indexPage .search:after{clear:both;content:'';display:block;}
+.indexPage .search .box{float:left;width:88%;border:1px solid #e0e0e0;border-radius:2rem;background:#fff;position: relative;z-index:1;overflow:hidden;}
+.indexPage .search .box i.icon{position: absolute;z-index:1;left:5%;top:50%;color:#999;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.indexPage .search .box input.text{background:#fff;padding:3% 0;border:0;width:100%;font-size:.25rem;padding-left:14%;padding-right:5%;outline:none;}
+.indexPage .search button.icon{position: absolute;right:0;top:50%;border:0;background:transparent;font-size:.6rem;width:15%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+.indexPage .fastNav{background:#fff;padding:3% 5% 5%;box-shadow:0 1px 5px #ddd;}
+.indexPage .fastNav:after{clear:both;content:'';display:block;}
+.indexPage .fastNav a{display:block;float:left;width:33.3%;}
+.indexPage .fastNav a i.icon{display:block;width:1.5rem;height:1.5rem;border-radius: 50%;line-height:1.5rem;margin:0 auto 5%;text-align:center;color:#fff;font-size:.6rem;}
+.indexPage .fastNav a:nth-child(1) i.icon{
+    background-image: -webkit-gradient(linear, right top, left top, from(#90c5fc), to(#ddc3fc));
+    background-image: -webkit-linear-gradient(right, #90c5fc, #ddc3fc);
+    background-image: -o-linear-gradient(right, #90c5fc, #ddc3fc);
+    background-image: linear-gradient(to left, #90c5fc, #ddc3fc);
+}
+.indexPage .fastNav a:nth-child(2) i.icon{
+    background-image: -webkit-gradient(linear, right top, left top, from(#3bf6ce), to(#8cd4f3));
+    background-image: -webkit-linear-gradient(right, #3bf6ce, #8cd4f3);
+    background-image: -o-linear-gradient(right, #3bf6ce, #8cd4f3);
+    background-image: linear-gradient(to left, #3bf6ce, #8cd4f3);
+}
+.indexPage .fastNav a:nth-child(3) i.icon{
+    background-image: -webkit-gradient(linear, right top, left top, from(#f6d365), to(#fda085));
+    background-image: -webkit-linear-gradient(right, #f6d365, #fda085);
+    background-image: -o-linear-gradient(right, #f6d365, #fda085);
+    background-image: linear-gradient(to left, #f6d365, #fda085);
+}
+.indexPage .fastNav a p{text-align:center;color:#666;font-size:.3rem;}
+.indexPage .pageBox{padding-top:5%;padding-bottom:5%;}
+.indexPage .list{}
+.indexPage .list ul li{margin-bottom:5%;background:#fff;box-shadow:0 1px 5px #ddd;border-radius: .1rem;overflow:hidden;}
+.indexPage .list ul li a{display:block;position: relative;z-index:1;}
+.indexPage .list ul li a .pic{width:30%;height:2rem;position: relative;z-index:1;overflow:hidden;}
+.indexPage .list ul li a .pic img{width:100%;height:100%;}
+.indexPage .list ul li a dl{position: absolute;z-index:1;left:35%;top:50%;width:60%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.indexPage .list ul li a dl dt{color:#333;margin-bottom:.5%;font-weight:bold;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;}
+.indexPage .list ul li a dl dd p{color:#999;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;margin-bottom:.5%;font-size:.25rem;}
+.indexPage .list ul li a dl dd b{font-size:.2rem;color:#FDA084;font-weight:normal;}
+
+/*植物列表*/
+.listPage{}
+.listPage .search{padding:3% 5%;position: relative;z-index:1;
+    background-image: -webkit-gradient(linear, right top, left top, from(#3bf6ce), to(#8cd4f3));
+    background-image: -webkit-linear-gradient(right, #3bf6ce, #8cd4f3);
+    background-image: -o-linear-gradient(right, #3bf6ce, #8cd4f3);
+    background-image: linear-gradient(to left, #3bf6ce, #8cd4f3);
+}
+.listPage .search:after{clear:both;content:'';display:block;}
+.listPage .search .box{float:left;width:100%;border:1px solid #e0e0e0;border-radius:2rem;background:#fff;position: relative;z-index:1;overflow:hidden;}
+.listPage .search .box i.icon{position: absolute;z-index:1;left:5%;top:50%;color:#999;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.listPage .search .box input.text{background:#fff;padding:3% 0;border:0;width:100%;font-size:.25rem;padding-left:12%;padding-right:5%;outline:none;}
+
+.listPage .banner{}
+.listPage .banner a{display:block;}
+.listPage .banner a img{width:100%;display:block;}
+.listPage .pageBox{padding-top:5%;padding-bottom:5%;}
+.listPage .scrollTxt{background:#fff;border-radius: .1rem;overflow:hidden;box-shadow:0 1px 5px #ddd;position: relative;z-index:1;margin-bottom:5%;}
+.listPage .scrollTxt a{display:block;padding:3% 5%;}
+.listPage .scrollTxt .l{position: absolute;z-index:1;left:5%;top:50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.listPage .scrollTxt .l i.icon{font-size:.7rem;
+    background-image:-webkit-linear-gradient(left,#8FD3F4,#39F7CD);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.listPage .scrollTxt .r{position: absolute;z-index:1;right:5%;top:50%;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.listPage .scrollTxt .r i.icon{color:#999;}
+.listPage .scrollTxt .c{padding:3% 10% 3% 15%;width:100%;}
+.listPage .list{}
+.listPage .list:after{clear:both;content:'';display:block;}
+.listPage .list ul li{float:left;width:48%;margin:0 4% 4% 0;box-shadow:0 1px 5px #ddd;background:#fff;overflow:hidden;border-radius: .1rem;}
+.listPage .list ul li:nth-child(2n){margin-right:0;}
+.listPage .list ul li a{display:block;padding:6%;}
+.listPage .list ul li a .pic{position: relative;z-index:1;overflow:hidden;width:100%;margin-bottom:5%;background:#efefef;height:3rem;}
+.listPage .list ul li a .pic img{width:100%;display:block;position: absolute;z-index:1;left:50%;top:50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);}
+.listPage .list ul li a p{font-size:.25rem;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;}
