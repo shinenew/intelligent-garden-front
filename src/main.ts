@@ -5,7 +5,6 @@ import store from "./store";
 import "./router/routeDefend";
 import "./assets/css/style.css";
 import "./assets/js/rem.js";
-import "./assets/js/swiper.min.js";
 
 new Vue({
   router,
