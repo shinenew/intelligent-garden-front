@@ -6,6 +6,69 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "14296157",
+      "name": "4444@2x",
+      "font_class": "44442x",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "14296149",
+      "name": "首页@2x",
+      "font_class": "shouye2x",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "14296150",
+      "name": "形状结合@2x",
+      "font_class": "xingzhuangjiehe2x",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "14296151",
+      "name": "扫一扫@2x",
+      "font_class": "saoyisao2x",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "14296143",
+      "name": "42@2x",
+      "font_class": "422x",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "14296144",
+      "name": "23@2x",
+      "font_class": "232x",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "14296145",
+      "name": "1111@2x",
+      "font_class": "11112x",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "14296146",
+      "name": "2222@2x",
+      "font_class": "22222x",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "14296147",
+      "name": "3333@2x",
+      "font_class": "33332x",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
       "icon_id": "14200798",
       "name": "ic_saom",
       "font_class": "ic_saom",

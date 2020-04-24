@@ -548,7 +548,7 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 .indexPage .fastNav{background:#fff;padding:3% 5% 5%;box-shadow:0 1px 5px #ddd;}
 .indexPage .fastNav:after{clear:both;content:'';display:block;}
 .indexPage .fastNav a{display:block;float:left;width:33.3%;}
-.indexPage .fastNav a i.icon{display:block;width:1.5rem;height:1.5rem;border-radius: 50%;line-height:1.5rem;margin:0 auto 5%;text-align:center;color:#fff;font-size:.6rem;}
+.indexPage .fastNav a i.icon{display:block;width:1.5rem;height:1.5rem;border-radius: 50%;line-height:1.5rem;margin:0 auto 5%;text-align:center;color:#fff;font-size:.6rem;text-shadow:0 1px 3px #666;}
 .indexPage .fastNav a:nth-child(1) i.icon{
     background-image: -webkit-gradient(linear, right top, left top, from(#90c5fc), to(#ddc3fc));
     background-image: -webkit-linear-gradient(right, #90c5fc, #ddc3fc);

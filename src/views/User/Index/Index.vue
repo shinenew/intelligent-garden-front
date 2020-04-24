@@ -14,15 +14,15 @@
     </div>
     <div class="fastNav">
       <a href="javascript:void(0);">
-        <i class="icon">&#xe61c;</i>
+        <i class="icon">&#xe62c;</i>
         <p>园区100家</p>
       </a>
       <a href="javascript:void(0);">
-        <i class="icon">&#xe61c;</i>
+        <i class="icon">&#xe62d;</i>
         <p>植物10万颗</p>
       </a>
       <a href="javascript:void(0);">
-        <i class="icon">&#xe61c;</i>
+        <i class="icon">&#xe62e;</i>
         <p>建筑2000个</p>
       </a>
     </div>
