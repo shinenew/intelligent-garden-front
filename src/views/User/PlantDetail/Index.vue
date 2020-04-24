@@ -6,6 +6,26 @@
         <h1>白杨树</h1>
       </div>
     </header>
+    <div class="bn">
+      <div class="swiper-container bannerSlide" id="_bannerSlide">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="box">
+              <a href="javascript:void(0);" target="_blank">
+                <div class="pic">
+                  <img
+                    class="lazy"
+                    data-original="assets/img/ind-bn-2.jpg"
+                    src="assets/img/ind-bn-2.jpg"
+                  />
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination bCenter" id="_bnPage"></div>
+      </div>
+    </div>
   </div>
 </template>
 
