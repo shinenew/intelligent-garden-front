@@ -1,6 +1,11 @@
 <template>
-  <div>
-    Detail视图
+  <div class="main plantDetailPage">
+    <header>
+      <div class="headerCon">
+        <a href="javascript:void(0)" class="icon arr">&#xe626;</a>
+        <h1>白杨树</h1>
+      </div>
+    </header>
   </div>
 </template>
 
