@@ -642,3 +642,31 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 
 /*详情页*/
 .plantDetailPage{}
+.plantDetailPage .bn{padding-top:1rem;margin-bottom:5%;}
+.plantDetailPage .bn img{width:100%;display:block;}
+.plantDetailPage .pageBox{padding-top:0;}
+.plantDetailPage .detail{background:#fff;border-radius: .1rem;overflow:hidden;padding:3% 5%;box-shadow:0 1px 5px #ddd;}
+.plantDetailPage .detail .txt{font-size:.25rem;height:2rem;overflow:hidden;position: relative;z-index:1;margin-bottom:5%;}
+
+.plantDetailPage .detail .txt .moreLnk{position: absolute;z-index:1;left:0;bottom:0;width:100%;text-align:center;height:.8rem;line-height:.8rem;
+
+
+    background: -moz-linear-gradient(top, rgba(255,255,255,.5) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.5)), color-stop(100%,rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,.5) 0%,rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,.5) 0%,rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,.5) 0%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,.5) 0%,rgba(255,255,255,1) 100%);
+}
+.plantDetailPage .detail .txt .moreLnk a{color:#3684D5;display:inline-block;position: relative;z-index:1;}
+.plantDetailPage .detail .txt .moreLnk a i.icon{position: absolute;z-index:1;right:-.4rem;top:39%;
+    -webkit-transform: translate(0, -50%) rotate(-90deg);
+    -moz-transform: translate(0, -50%) rotate(-90deg);
+    -ms-transform: translate(0, -50%) rotate(-90deg);
+    transform: translate(0, -50%) rotate(-90deg);
+}
+
+.plantDetailPage .detail .video{margin-bottom:5%;}
+.plantDetailPage .detail .video video{width:100%;display:block;}
+.plantDetailPage .detail .pic{margin-bottom:5%;}
+.plantDetailPage .detail .pic img{width:100%;display:block;}

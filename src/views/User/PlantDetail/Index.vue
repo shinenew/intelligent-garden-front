@@ -7,23 +7,24 @@
       </div>
     </header>
     <div class="bn">
-      <div class="swiper-container bannerSlide" id="_bannerSlide">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="box">
-              <a href="javascript:void(0);" target="_blank">
-                <div class="pic">
-                  <img
-                    class="lazy"
-                    data-original="assets/img/ind-bn-2.jpg"
-                    src="assets/img/ind-bn-2.jpg"
-                  />
-                </div>
-              </a>
-            </div>
-          </div>
+      <img src="../../../assets/img/list-banner.png" />
+    </div>
+    <div class="pageBox">
+      <div class="detail">
+        <div class="txt">
+          <div class="moreLnk">
+            <a href="javascript:void(0);">
+              查看更多
+              <i class="icon">&#xe626;</i>
+            </a>
+          </div>白杨树（Populus alba）是一种落叶乔木，一般高15～30米，树皮灰白色，是一种很普通的树。生存能力极强，大路边，田埂旁，有黄土的地方，就有它的存在。用途多样，可以当柴烧，打家具，做屋檩栋梁，制作农具。白杨组在我国产1种(1杂交种），13变种，7变型。白杨树（Populus alba）是一种落叶乔木，一般高15～30米，树皮灰白色，是一种很普通的树。生存能力极强，大路边，田埂旁，有黄土的地方，就有它的存在。用途多样，可以当柴烧，打家具，做屋檩栋梁，制作农具。白杨组在我国产1种(1杂交种），13变种，7变型。白杨树（Populus alba）是一种落叶乔木，一般高15～30米，树皮灰白色，是一种很普通的树。生存能力极强，大路边，田埂旁，有黄土的地方，就有它的存在。用途多样，可以当柴烧，打家具，做屋檩栋梁，制作农具。白杨组在我国产1种(1杂交种），13变种，7变型。白杨树（Populus alba）是一种落叶乔木，一般高15～30米，树皮灰白色，是一种很普通的树。生存能力极强，大路边，田埂旁，有黄土的地方，就有它的存在。用途多样，可以当柴烧，打家具，做屋檩栋梁，制作农具。白杨组在我国产1种(1杂交种），13变种，7变型。白杨树（Populus alba）是一种落叶乔木，一般高15～30米，树皮灰白色，是一种很普通的树。生存能力极强，大路边，田埂旁，有黄土的地方，就有它的存在。用途多样，可以当柴烧，打家具，做屋檩栋梁，制作农具。白杨组在我国产1种(1杂交种），13变种，7变型。
         </div>
-        <div class="swiper-pagination bCenter" id="_bnPage"></div>
+        <div class="video">
+          <video preload="auto" controls="controls" src="../../../assets/media/test.mp4"></video>
+        </div>
+        <div class="pic">
+          <img src="../../../assets/img/sz.jpg" />
+        </div>
       </div>
     </div>
   </div>
