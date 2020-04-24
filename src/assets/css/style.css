@@ -639,3 +639,6 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);}
 .listPage .list ul li a p{font-size:.25rem;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;}
+
+/*详情页*/
+.plantDetailPage{}
