@@ -144,6 +144,15 @@ export default new Router({
         anonymous: true,
         allowRole: "", // 允许访问的角色
       }
+    },
+    {
+      path: "/demo",
+      name: "demo",
+      component: () => import("@/views/Demo/Index.vue"),
+      meta: {
+        anonymous: true,
+        allowRole: "",
+      }
     }
   ]
 });
