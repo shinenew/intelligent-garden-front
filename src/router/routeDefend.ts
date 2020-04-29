@@ -1,6 +1,7 @@
 import { Route } from "vue-router";
 import router from "./index";
-// import store from "@/store";
+import store from "@/store";
+import IUserInfo from "@/constant/DataModel/IUserInfo";
 // import INav from "@/constant/DataModel/INav";
 // import IRoute from "@/constant/DataModel/IRoute";
 
@@ -8,59 +9,74 @@ import router from "./index";
  * 路由导航守卫
  */
 router.beforeEach((to: Route, from: Route, next) => {
-  // console.log("-----------router-defend-----------");
-  // console.log("--from--");
-  // console.log(from);
-  // console.log("--to--");
-  // console.log(to);
-  // console.log(to.fullPath);
+  console.log("-----------router-defend-----------");
+  console.log("--from--");
+  console.log(from);
+  console.log("--to--");
+  console.log(to);
+  console.log(to.fullPath);
+  console.log(router);
+
   // 权限校验
-  let allowNext: boolean = true;
-  // let refuseReason: string | null = null;
-  // let nav: INav | null = null;
-  // // 判断权限
-  // const navs: INav[] = store.getters["user/navs"];
-  // // console.log(navs);
-  // if (navs !== null && navs.length > 0) {
-  //   const currentNav: INav[] = navs.filter(k => k.url === to.fullPath);
-  //   if (currentNav !== null && currentNav.length > 0) {
-  //     nav = currentNav[0];
-  //     allowNext = true;
-  //   } else {
-  //     refuseReason = "菜单权限不足";
-  //   }
-  // } else {
-  //   refuseReason = "未获取登录权限菜单";
-  // }
+  // 是否允许匿名
+  let allowNext: boolean = false;
+  let refuseCode: string | null = null;
+  let refuseReason: string | null = null;
 
-  // // 允许匿名
-  // if (!allowNext && to.meta && to.meta.anonymous) {
-  //   allowNext = true;
-  //   refuseReason = null;
-  // }
+  // 直接通过前端路由判断权限
+  if (to.meta && to.meta.anonymous) {
+    allowNext = true;
+  } else {
+    // 判断登录
+    const isLogin: boolean = store.getters["user/isLogin"];
+    // console.log(isLogin);
+    if (isLogin) {
+      // 判断角色
+      const userInfo: IUserInfo = store.getters["user/user"];
+      // console.log(userInfo.user.roles[0].code);
+      // console.log(to);
+      if (to.meta
+        && to.meta.allowRole
+        && userInfo.roles
+        && userInfo.roles.length > 0
+        && (to.meta.allowRole.split(",").indexOf(userInfo.roles[0].id) >= 0 || to.meta.allowRole === "all")) {
+        allowNext = true;
+      } else {
+        refuseReason = "无法进入" + to.fullPath + "，当前路由不允许当前角色：" + userInfo.roles[0].name + "访问";
+      }
+    } else {
+      refuseCode = "not-login";
+      refuseReason = "无法进入" + to.fullPath + "，当前路由不允许匿名访问";
+    }
+  }
 
-  // 记录route
-  // const route: IRoute = {
-  //   url: to.fullPath, // 当前路由url
-  //   anonymous: (to.meta && to.meta.anonymous) ? (to.meta && to.meta.anonymous) : false, // 该url是否允许匿名访问
-  //   isLogin: store.getters["user/isLogin"] === null ? false : store.getters["user/isLogin"], // 用户是否已经登录
-  //   loginInfo: store.getters["user/user"], // 登录用户信息
-  //   access: allowNext, // 是否允许进入路由
-  //   refuseReason: refuseReason, // 拒绝进入原因
-  //   nav: nav, // 匹配到的菜单信息
-  //   query: to.query, // query查询参数
-  //   params: to.params, // params查询参数
-  // };
-  // store.dispatch("route/addRouteAction", route);
+  // 将当前路由名称作为页面title
+  if (to.meta && to.meta.title) {
+    document.title = to.meta.title;
+  }
 
   if (allowNext) {
-    next();
+    // 解决IOS无法识别前端路由问题
+    if (to.path !== location.pathname) {
+      location.assign(to.fullPath);
+    } else {
+      next();
+    }
   } else {
     // 跳转到无权访问页
-    console.log("无权访问该页面，跳转到登录页");
-    next({
-      path: "/auth/login",
-      query: {}
-    });
+    console.log(refuseReason);
+    if (refuseCode === "not-login") {
+      next({
+        path: "/staff/login",
+        query: {
+          src: window.location.protocol + "//" + window.location.host + to.fullPath
+        }
+      });
+    } else {
+      next({
+        path: "/staff/login",
+        query: {}
+      });
+    }
   }
 });

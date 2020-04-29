@@ -246,6 +246,22 @@ class CommonUtil {
   static clearStorage(): void {
     sessionStorage.clear();
   }
+
+  /**
+   * 获取保护级别
+   */
+  static getProtectionLevelName(val: string): string {
+    switch (val) {
+      case "1":
+        return "濒危保护植物";
+      case "2":
+        return "渐危保护植物";
+      case "3":
+        return "稀有保护植物";
+      default:
+        return "";
+    }
+  }
 }
 
 export default CommonUtil;

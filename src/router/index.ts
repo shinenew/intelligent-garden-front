@@ -51,8 +51,8 @@ export default new Router({
       name: "staff",
       component: () => import("@/views/Staff/Index/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     },
     {
@@ -69,8 +69,8 @@ export default new Router({
       name: "about",
       component: () => import("@/views/Staff/My/About/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     },
     {
@@ -78,8 +78,8 @@ export default new Router({
       name: "my",
       component: () => import("@/views/Staff/My/Index/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     },
     {
@@ -87,8 +87,8 @@ export default new Router({
       name: "staff-workbench",
       component: () => import("@/views/Staff/Workbench/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     },
     {
@@ -96,8 +96,8 @@ export default new Router({
       name: "staff-task-list",
       component: () => import("@/views/Staff/Task/List/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     },
     {
@@ -105,8 +105,8 @@ export default new Router({
       name: "staff-task-detail",
       component: () => import("@/views/Staff/Task/Detail/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     },
     {
@@ -114,8 +114,8 @@ export default new Router({
       name: "staff-task-process",
       component: () => import("@/views/Staff/Task/Process/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     },
     {
@@ -123,8 +123,8 @@ export default new Router({
       name: "staff-urgent-list",
       component: () => import("@/views/Staff/Urgent/List/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     },
     {
@@ -132,8 +132,8 @@ export default new Router({
       name: "staff-urgent-detail",
       component: () => import("@/views/Staff/Urgent/Detail/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     },
     {
@@ -141,17 +141,8 @@ export default new Router({
       name: "staff-urgent-write",
       component: () => import("@/views/Staff/Urgent/Write/Index.vue"),
       meta: {
-        anonymous: true,
-        allowRole: "", // 允许访问的角色
-      }
-    },
-    {
-      path: "/demo",
-      name: "demo",
-      component: () => import("@/views/Demo/Index.vue"),
-      meta: {
-        anonymous: true,
-        allowRole: "",
+        anonymous: false,
+        allowRole: "3", // 允许访问的角色
       }
     }
   ]

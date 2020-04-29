@@ -67,17 +67,6 @@ const request: any = (func: string, apiUrl: string, param?: object, contentType:
    */
   _axios.interceptors.response.use(
     (response) => {
-      // 将后端返回结果封装为IReturnResult对象
-      let returnResult: IReturnResult<any> = {
-        success: true,
-        errCode: 0,
-        errMsg: "",
-        data: response.data,
-      };
-      response.data = returnResult;
-
-      // to-do
-      // 注意，如果后端业务类错误，通过HTTPCODE=200返回，则这里需要根据业务错误标识，封装IReturnResult
       return response;
     },
     (error) => {
