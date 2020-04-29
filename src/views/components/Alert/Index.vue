@@ -1,31 +1,23 @@
 <template>
   <!-- 提示 -->
   <div
-    class="toast"
+    class="dialog dgShow"
     v-show="alertParam.show"
   >
-    <dl v-show="!alertParam.success">
-      <dt>
-        <svg
-          class="icon"
-          aria-hidden="true"
-        >
-          <use xlink:href="#icon-ic_xxx"></use>
-        </svg>
-      </dt>
-      <dd>{{alertParam.content}}</dd>
-    </dl>
-    <dl v-show="alertParam.success">
-      <dt>
-        <svg
-          class="icon"
-          aria-hidden="true"
-        >
-          <use xlink:href="#icon-ic_duigx"></use>
-        </svg>
-      </dt>
-      <dd>{{alertParam.content}}</dd>
-    </dl>
+    <div class="dgContent">
+      <div class="dgBox">
+        <dl>
+          <dt>{{alertParam.title}}</dt>
+          <dd v-html="alertParam.content"></dd>
+        </dl>
+      </div>
+      <div class="dgFooter">
+        <a
+          href="javascript:void(0);"
+          @click="closeAlert"
+        >知道了</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,35 +25,33 @@
 import { Component, Vue } from "vue-property-decorator";
 
 /**
- * 提示
+ * 全屏提示
  */
 @Component
-export default class Alert extends Vue {
+export default class AlertModal extends Vue {
   /**
    * 提示参数
    */
   private alertParam: any = {
     show: false,
-    success: "",
+    title: "",
     content: ""
   };
 
   /**
    * 显示提示
    */
-  private alert(
+  private alertModal(
     content: string,
-    success: boolean = true,
-    autoCloseSecond: number = 30
+    title: string = "温馨提示",
+    autoCloseSecond: number = 3
   ) {
     this.alertParam.show = true;
-    this.alertParam.success = success;
+    this.alertParam.title = title;
     this.alertParam.content = content;
 
     // 3秒后自动关闭
-    if (autoCloseSecond > 0) {
-      setTimeout(this.closeAlert, autoCloseSecond * 1000);
-    }
+    setTimeout(this.closeAlert, autoCloseSecond * 1000);
   }
 
   /**
@@ -69,13 +59,13 @@ export default class Alert extends Vue {
    */
   private closeAlert() {
     this.alertParam.show = false;
-    this.alertParam.success = true;
+    this.alertParam.title = "";
     this.alertParam.content = "";
   }
 
   created() {
     // 重写alter方法
-    (window as any).alert = this.alert;
+    (window as any).alert = this.alertModal;
   }
 }
 </script>

@@ -8,18 +8,18 @@
         <img src="../../../../assets/img/user.png" />
       </div>
       <dl>
-        <dt>张三</dt>
-        <dd>123456789123</dd>
+        <dt>{{user ? user.realName : null}}</dt>
+        <dd>{{user ? user.mobile : null}}</dd>
       </dl>
     </div>
     <div class="pageBox">
       <div class="linkList">
         <ul>
           <li>
-            <a href="javascript:void(0);">
+            <router-link to="/staff/about">
               <p>关于我们</p>
               <i class="icon">&#xe61e;</i>
-            </a>
+            </router-link>
           </li>
           <li>
             <a href="javascript:void(0);">
@@ -30,32 +30,30 @@
         </ul>
       </div>
     </div>
-    <nav>
-      <a href="javascript:void(0);">
-        <i class="icon">&#xe620;</i>
-        <p>首页</p>
-      </a>
-      <a href="javascript:void(0);" class="cu">
-        <i class="icon">&#xe61d;</i>
-        <p>工作台</p>
-      </a>
-      <a href="javascript:void(0);">
-        <i class="icon">&#xe61c;</i>
-        <p>我的</p>
-      </a>
-    </nav>
+    <NavComponent />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import NavComponent from "@/views/components/StaffNav/Index.vue";
+import { Getter, namespace } from "vuex-class";
+import IUserInfo from "@/constant/DataModel/IUserInfo";
+const userModule = namespace("user");
 @Component({
   components: {
-    // 视图中用到的组件，在上方import，在这里注入
+    NavComponent
   }
 })
 export default class Index extends Vue {
-  // 这里定义属性，方法，prop，emit等，详见vue-property-decorator
+  /**
+   * 登录用户信息
+   */
+  @userModule.Getter("user")
+  private user!: IUserInfo;
+
+  created() {
+    console.log(this.user);
+  }
 }
 </script>

@@ -6,31 +6,40 @@
           href="javascript:void(0)"
           class="icon arr"
         >&#xe626;</a>
-        <h1>首页</h1>
+        <h1>任务管理</h1>
       </div>
     </header>
     <div class="pageBox">
-      <div class="scan">
-        <img src="../../../assets/img/scan.png" />
-      </div>
       <div class="tab">
         <ul>
           <li
             :class="status === 0 ? 'cu' : ''"
             @click="changeStatus(0)"
+            style="width: 33%;"
           >
             <span>
-              待完成任务
+              待完成
               <em v-show="this.unReceiveCount > 0">{{this.unReceiveCount}}</em>
             </span>
           </li>
           <li
             @click="changeStatus(1)"
             :class="status === 1 ? 'cu' : ''"
+            style="width: 33%;"
           >
             <span>
-              已领取任务
+              已领取
               <em v-show="this.receiveCount > 0">{{this.receiveCount}}</em>
+            </span>
+          </li>
+          <li
+            style="width: 33%;"
+            @click="changeStatus(9)"
+            :class="status === 9 ? 'cu' : ''"
+          >
+            <span>
+              已完成
+              <em v-show="this.finishCount > 0">{{this.finishCount}}</em>
             </span>
           </li>
         </ul>
@@ -104,13 +113,14 @@ import moment from "moment";
     ListLoadding
   }
 })
-export default class Index extends Vue {
+export default class List extends Vue {
   private status: number = 0;
   private page: number = 1;
   private pageSize: number = 10;
   private taskList: any[] = [];
   private unReceiveCount: number = 0;
   private receiveCount: number = 0;
+  private finishCount: number = 0;
   private committing: boolean = false; // 翻页锁定状态
   private loadding: boolean = false;
 
@@ -123,13 +133,12 @@ export default class Index extends Vue {
 
   created() {
     let status = commonUtil.getUrlParam("status", window.location.search);
-    console.log(status);
     if (!status) {
       status = "0";
     }
     this.status = parseInt(status);
     this.getTaskList();
-    this.getTaskCount();
+    // this.getTaskCount();
   }
 
   /**
@@ -212,6 +221,15 @@ export default class Index extends Vue {
     });
     if (res2.success && res2.data) {
       this.receiveCount = res2.data.total;
+    }
+
+    const res3 = await staffApi.getTaskDetailPageList({
+      page: this.page,
+      pageSize: this.pageSize,
+      status: 9
+    });
+    if (res3.success && res3.data) {
+      this.finishCount = res3.data.total;
     }
   }
 

@@ -2,7 +2,10 @@
   <div class="main urgListPage">
     <header>
       <div class="headerCon">
-        <a href="javascript:void(0)" class="icon arr">&#xe626;</a>
+        <router-link
+          to="/staff/workbench"
+          class="icon arr"
+        >&#xe626;</router-link>
         <h1>应急历史记录</h1>
       </div>
     </header>

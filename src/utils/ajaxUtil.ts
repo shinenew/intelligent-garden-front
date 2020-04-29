@@ -70,9 +70,13 @@ const request: any = (func: string, apiUrl: string, param?: object, contentType:
       return response;
     },
     (error) => {
+      // console.log(error.response);
       // 将错误信息封装为IReturnResult对象返回
       if (error.response) {
-        if (error.response.status === 404) {
+        if (error.response.status === 401) {
+          store.dispatch("user/clearAction");
+          window.location.href = "/staff/login";
+        } else if (error.response.status === 404) {
           let returnResult: IReturnResult<any> = {
             success: false,
             errCode: 404,
@@ -83,8 +87,8 @@ const request: any = (func: string, apiUrl: string, param?: object, contentType:
         } else {
           let returnResult: IReturnResult<any> = {
             success: false,
-            errCode: error.response.data.errcode,
-            errMsg: error.response.data.errmsg_cn, // 这里应该是根据当前语言环境确定要赋予哪个语言的变量给errMsg，此处忽略了这个逻辑
+            errCode: error.response.status,
+            errMsg: error.response.status, // 这里应该是根据当前语言环境确定要赋予哪个语言的变量给errMsg，此处忽略了这个逻辑
             data: null,
           };
           error.response.data = returnResult;
@@ -111,7 +115,7 @@ const request: any = (func: string, apiUrl: string, param?: object, contentType:
     if (store && store.getters && store.getters["user/accessToken"]) {
       const accessToken: string | null = store.getters["user/accessToken"];
       if (accessToken) {
-        header.Authorization = "Bearer " + accessToken;
+        header.token = accessToken;
       }
     }
     return header;

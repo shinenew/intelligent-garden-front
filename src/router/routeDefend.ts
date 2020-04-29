@@ -33,13 +33,12 @@ router.beforeEach((to: Route, from: Route, next) => {
     if (isLogin) {
       // 判断角色
       const userInfo: IUserInfo = store.getters["user/user"];
-      // console.log(userInfo.user.roles[0].code);
       // console.log(to);
       if (to.meta
         && to.meta.allowRole
         && userInfo.roles
         && userInfo.roles.length > 0
-        && (to.meta.allowRole.split(",").indexOf(userInfo.roles[0].id) >= 0 || to.meta.allowRole === "all")) {
+        && (to.meta.allowRole.split(",").indexOf(userInfo.roles[0].id.toString()) >= 0 || to.meta.allowRole === "all")) {
         allowNext = true;
       } else {
         refuseReason = "无法进入" + to.fullPath + "，当前路由不允许当前角色：" + userInfo.roles[0].name + "访问";
@@ -49,6 +48,8 @@ router.beforeEach((to: Route, from: Route, next) => {
       refuseReason = "无法进入" + to.fullPath + "，当前路由不允许匿名访问";
     }
   }
+
+  console.log(allowNext);
 
   // 将当前路由名称作为页面title
   if (to.meta && to.meta.title) {

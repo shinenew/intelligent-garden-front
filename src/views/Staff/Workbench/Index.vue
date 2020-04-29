@@ -2,7 +2,10 @@
   <div class="main workBench">
     <header>
       <div class="headerCon">
-        <a href="javascript:void(0)" class="icon arr">&#xe626;</a>
+        <a
+          href="javascript:void(0)"
+          class="icon arr"
+        >&#xe626;</a>
         <h1>工作台</h1>
       </div>
     </header>
@@ -13,14 +16,14 @@
         </div>
         <div class="bd">
           <div class="list">
-            <a href="javascript:void(0);">
-              <b>52</b>
+            <router-link to="/staff/task/list?status=1">
+              <b>{{unReceiveCount + receiveCount}}</b>
               <p>未完成任务</p>
-            </a>
-            <a href="javascript:void(0);">
-              <b>52</b>
+            </router-link>
+            <router-link to="/staff/task/list?status=9">
+              <b>{{finishCount}}</b>
               <p>已完成任务</p>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -30,18 +33,18 @@
         </div>
         <div class="bd">
           <div class="list">
-            <a href="javascript:void(0);">
+            <router-link to="/staff/urgent/write">
               <i class="icon">&#xe623;</i>
               <p>填写应急处理</p>
-            </a>
-            <a href="javascript:void(0);">
+            </router-link>
+            <router-link to="/staff/urgent/list">
               <i class="icon">&#xe621;</i>
               <p>应急历史记录</p>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
-      <div class="block parkLnk">
+      <!-- <div class="block parkLnk">
         <div class="hd">
           <h3>园区管理</h3>
         </div>
@@ -61,34 +64,59 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
-    <nav>
-      <a href="javascript:void(0);">
-        <i class="icon">&#xe620;</i>
-        <p>首页</p>
-      </a>
-      <a href="javascript:void(0);" class="cu">
-        <i class="icon">&#xe61d;</i>
-        <p>工作台</p>
-      </a>
-      <a href="javascript:void(0);">
-        <i class="icon">&#xe61c;</i>
-        <p>我的</p>
-      </a>
-    </nav>
+    <NavComponent />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import NavComponent from "@/views/components/StaffNav/Index.vue";
+import { staffApi } from "@/api";
 @Component({
   components: {
-    // 视图中用到的组件，在上方import，在这里注入
+    NavComponent
   }
 })
 export default class Workbench extends Vue {
-  // 这里定义属性，方法，prop，emit等，详见vue-property-decorator
+  private unReceiveCount: number = 0;
+  private receiveCount: number = 0;
+  private finishCount: number = 0;
+
+  created() {
+    this.getTaskCount();
+  }
+  /**
+   * 获取订单数
+   */
+  async getTaskCount() {
+    const res = await staffApi.getTaskDetailPageList({
+      page: 1,
+      pageSize: 1,
+      status: 0
+    });
+    if (res.success && res.data) {
+      this.unReceiveCount = res.data.total;
+    }
+
+    const res2 = await staffApi.getTaskDetailPageList({
+      page: 1,
+      pageSize: 1,
+      status: 1
+    });
+    if (res2.success && res2.data) {
+      this.receiveCount = res2.data.total;
+    }
+
+    const res3 = await staffApi.getTaskDetailPageList({
+      page: 1,
+      pageSize: 1,
+      status: 9
+    });
+    if (res3.success && res3.data) {
+      this.finishCount = res3.data.total;
+    }
+  }
 }
 </script>

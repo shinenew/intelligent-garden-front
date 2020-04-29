@@ -297,7 +297,7 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 
 
 /*图片上传*/
-.uploadPic{margin-bottom:5%;display:block;float:left;width:100%;}
+.uploadPic{margin-bottom:5%;display:block;float:left;width:30%;margin-left: 3%;}
 .uploadPic a.upContrl{display:block;width:100%;background:#e5e7ea;height:1.8rem;border:1px solid #ddd;position: relative;z-index:1;}
 .uploadPic a.upContrl:before,
 .uploadPic a.upContrl:after{display:block;content:'';width:1rem;height:1px;background:#aaa;position: absolute;z-index:1;left:50%;top:50%;}
@@ -321,7 +321,7 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
   -ms-transform: translate(-50%,-50%) rotate(90deg);
   transform: translate(-50%,-50%) rotate(90deg);
 }
-
+.uploadPic img {width: 100%;height: 1.8rem;}
 
 /*text*/
 .mod input.text {height: 1rem;border: 0;background: transparent;text-align: left;width: 100%;padding: 0 8% 0 2.5rem;position: relative;z-index: 2;}
@@ -727,4 +727,257 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
   border: 1px solid #fff;
   border-radius: 50%;
   padding: .4rem;
+}
+
+
+.nodata {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+.nodata .tip {
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: -moz-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-pack: center;
+  -moz-box-orient: horizontal;
+  -ms-box-pack: center;
+  -ms-box-orient: horizontal;
+  /* background: #fff; */
+  border-radius: .1rem;
+  padding-top: .5rem;
+}
+
+.nodata .tip dl {
+  text-align: center;
+  padding-left: 0;
+}
+
+.nodata .tip dl dt {
+  width: 40%;
+  margin: 0 auto 5%;
+  display: block;
+}
+
+.nodata .tip dl dt img {
+  width: 100%;
+  display: block;
+}
+
+.nodata .tip dl dd p {
+  margin-bottom: 5%;
+}
+
+.nodata .tip dl dd p .btn {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.nodata .part {
+  display: none;
+}
+
+
+.dialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .8);
+  z-index: 999;
+  color: #fff;
+  opacity: 0;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  -webkit-transform: scale3d(0, 0, 0);
+  -moz-transform: scale3d(0, 0, 0);
+  -ms-transform: scale3d(0, 0, 0);
+  transform: scale3d(0, 0, 0);
+}
+
+.dialog .dgContent {
+  width: 80%;
+  background: #fff;
+  border-radius: .1rem;
+  color: #666;
+  overflow: hidden;
+}
+
+
+.dgShow {
+  -webkit-animation-name: dgShow;
+  -webkit-animation-duration: .2s;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+  -ms-animation-name: dgShow;
+  -ms-animation-duration: .2s;
+  -ms-animation-timing-function: ease;
+  -ms-animation-delay: 0s;
+  -ms-animation-iteration-count: 1;
+  -ms-animation-direction: normal;
+  -ms-animation-fill-mode: forwards;
+  -moz-animation-name: dgShow;
+  -moz-animation-duration: .2s;
+  -moz-animation-timing-function: ease;
+  -moz-animation-delay: 0s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-direction: normal;
+  -moz-animation-fill-mode: forwards;
+  animation-name: dgShow;
+  animation-duration: .2s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes dgShow {
+  0% {
+      -webkit-transform: scale3d(0, 0, 0);
+      transform: scale3d(0, 0, 0);
+      opacity: 0;
+      z-index: -1;
+  }
+
+  100% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      opacity: 1;
+      z-index: 999;
+  }
+}
+
+@-ms-keyframes dgShow {
+  0% {
+      -ms-transform: scale3d(0, 0, 0);
+      transform: scale3d(0, 0, 0);
+      opacity: 0;
+      z-index: -1;
+  }
+
+  100% {
+      -ms-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      opacity: 1;
+      z-index: 999;
+  }
+}
+
+@-moz-keyframes dgShow {
+  0% {
+      -moz-transform: scale3d(0, 0, 0);
+      transform: scale3d(0, 0, 0);
+      opacity: 0;
+      z-index: -1;
+  }
+
+  100% {
+      -moz-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      opacity: 1;
+      z-index: 999;
+  }
+}
+
+@keyframes dgShow {
+  0% {
+      transform: scale3d(0, 0, 0);
+      opacity: 0;
+      z-index: -1;
+  }
+
+  100% {
+      transform: scale3d(1, 1, 1);
+      opacity: 1;
+      z-index: 999;
+  }
+}
+
+
+.dgBox {
+  padding: 8% 5%;
+  border-bottom: 1px solid #ccc;
+}
+
+.dgBox dl dt {
+  font-size: .3rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 3%;
+}
+
+/* .dgBox .dgForm {} */
+.dgBox .dgForm input.text {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: .1rem;
+  background: #fff;
+  height: 1rem;
+  line-height: 1rem;
+  padding-left: 3%;
+}
+
+
+.dgFooter:after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
+.dgFooter a {
+  display: block;
+  float: left;
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  background: #fff;
+  color: #3188D9;
+}
+
+.dgFooter a.gray {
+  color: #666;
+}
+
+.dgFooter.col2 a {
+  width: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+.dgFooter.col2 a:after {
+  height: 100%;
+  width: 1px;
+  background: #e5e5e5;
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+}
+
+.dgFooter.col2 a:first-child:after {
+  display: none;
 }

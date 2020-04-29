@@ -2,7 +2,10 @@
   <div class="main urgWritePage">
     <header>
       <div class="headerCon">
-        <a href="javascript:void(0)" class="icon arr">&#xe626;</a>
+        <router-link
+          to="/staff/workbench"
+          class="icon arr"
+        >&#xe626;</router-link>
         <h1>填写应急处理</h1>
       </div>
     </header>
@@ -47,11 +50,19 @@
 
         <label class="mod">
           <i>数量</i>
-          <input type="number" placeholder="0" class="text" />
+          <input
+            type="number"
+            placeholder="0"
+            class="text"
+          />
         </label>
         <label class="mod">
           <i>应急情况</i>
-          <input type="text" placeholder="请填写" class="text" />
+          <input
+            type="text"
+            placeholder="请填写"
+            class="text"
+          />
         </label>
         <label class="mod modFull">
           <i>现场图片</i>
@@ -66,14 +77,20 @@
               <img src="../../../../assets/img/def-pic.png" />
             </b>
             <span class="uploadPic">
-              <a href="javascript:void(0)" class="upContrl"></a>
+              <a
+                href="javascript:void(0)"
+                class="upContrl"
+              ></a>
             </span>
           </em>
         </label>
       </div>
     </div>
     <footer>
-      <a href="javascript:void(0);" class="btn btnBig">提交</a>
+      <a
+        href="javascript:void(0);"
+        class="btn btnBig"
+      >提交</a>
     </footer>
   </div>
 </template>
