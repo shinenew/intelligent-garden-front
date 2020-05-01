@@ -38,6 +38,15 @@ export default new Router({
       }
     },
     {
+      path: "/zoneDetail",
+      name: "zoneDetail",
+      component: () => import("@/views/User/ZoneDetail/Index.vue"),
+      meta: {
+        anonymous: true,
+        allowRole: "", // 允许访问的角色
+      }
+    },
+    {
       path: "/buildDetail",
       name: "buildDetail",
       component: () => import("@/views/User/BuildDetail/Index.vue"),

@@ -14,7 +14,10 @@ enum Urls {
   getTaskList = "/wechat/getStaffTaskDetailPageList", // 获取养护任务列表
   receiveTask = "/wechat/receive", // 领取养护任务
   finishTask = "/wechat/fulfilTask", // 完成养护任务
-  getTaskDetail = "/wechat/getTaskAssignmentDetail" , // 获取任务详情
+  getTaskDetail = "/wechat/getTaskAssignmentDetail", // 获取任务详情
+  writeUrgent = "/wechat/urgentWrite", // 填写应急事件
+  getUrgentList = "/wechat/urgentPageList", // 获取应急事件列表
+  upload = "/attachment/upload", // 上传
 }
 
 export default Urls;

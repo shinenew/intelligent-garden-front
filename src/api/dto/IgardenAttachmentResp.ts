@@ -1,5 +1,5 @@
 /**
- * 园区对象
+ * 附件对象
  */
 export default interface IGardenAttachmentResp {
   id: number; // 附件id

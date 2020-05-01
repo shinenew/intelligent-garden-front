@@ -29,9 +29,9 @@
           <div class="c">
             <p>{{this.zone ? this.zone.intro : ""}}</p>
           </div>
-          <!-- <div class="r">
+          <div class="r" @click="toDetail">
             <i class="icon">&#xe61e;</i>
-          </div> -->
+          </div>
         </a>
       </div>
       <div class="list">
@@ -218,6 +218,9 @@ export default class List extends Vue {
     this.committing = false;
   }
 
+  /**
+   * 跳转到植物/建筑详情
+   */
   goTo(objType: number, id: number) {
     let url: string = "";
     if (objType === 1) {
@@ -227,6 +230,15 @@ export default class List extends Vue {
     }
 
     url += `?id=${id}&src=${encodeURIComponent(window.location.href)}`;
+    this.$router.push(url);
+  }
+
+  /**
+   * 到园区详情
+   */
+  toDetail() {
+    let url: string = '/zoneDetail?id=' + this.id;
+    url += `&src=${encodeURIComponent(window.location.href)}`;
     this.$router.push(url);
   }
 }
