@@ -499,7 +499,7 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 /*应急处理详情*/
 .urgViewPage{}
 .urgViewPage .form .tit{color:#FF8181;font-size:.25rem;padding:5% 0% 0;}
-.urgViewPage .form .mod em img{width:100%;display:block;}
+.urgViewPage .form .mod em img{width:100%;display:block;margin-top:10%;}
 
 /*应急历史记录*/
 .urgListPage{}

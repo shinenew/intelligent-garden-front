@@ -18,6 +18,7 @@ enum Urls {
   writeUrgent = "/wechat/urgentWrite", // 填写应急事件
   getUrgentList = "/wechat/urgentPageList", // 获取应急事件列表
   upload = "/attachment/upload", // 上传
+  getUrgentDetail = "/urgent/getDetail" // 获取应急详情
 }
 
 export default Urls;
