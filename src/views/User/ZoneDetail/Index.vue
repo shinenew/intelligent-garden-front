@@ -51,7 +51,7 @@
             </a>
           </div>
           {{this.objDetail.name}}，本园区属于{{getLevelName(this.objDetail.level)}}{{getTypeName(this.objDetail.type)}}，园区占地面积{{this.objDetail.area}}平方米，于{{formatTime(this.objDetail.buildTime)}}开建，{{formatTime(this.objDetail.finishTime)}}建成，园区内共有植物{{this.objDetail.plantCount}}棵、知名建筑{{this.objDetail.buildCount}}个。<br><br>
-          本园区位于{{this.objDetail.province}}{{this.objDetail.city}}{{this.objDetail.district}}{{this.objDetail.address}}{{this.objDetail.traffic  ? `，可乘坐${this.objDetail.traffic}到达` : ``}}。<br><br>
+          本园区位于{{findBaseData(this.objDetail.province)}}{{findBaseData(this.objDetail.city)}}{{findBaseData(this.objDetail.district)}}{{this.objDetail.address}}{{this.objDetail.traffic  ? `，可乘坐${this.objDetail.traffic}到达` : ``}}。<br><br>
           园区营业时间为：{{this.objDetail.businessStart}} ~ {{this.objDetail.businessEnd}} <br><br>
           <b>园区介绍</b>
           <p>{{this.objDetail.intro}}</p> <br>
@@ -77,7 +77,7 @@ import Swiper from "swiper";
 import "swiper/css/swiper.css";
 import $ from "jquery";
 import commonUtil from "@/utils/commonUtil";
-import { plantApi, zoneApi } from "@/api";
+import { plantApi, zoneApi, authApi } from "@/api";
 import moment from "moment";
 
 @Component({
@@ -89,6 +89,7 @@ export default class Detail extends Vue {
   private id: any = ""; // 园区id
   private src: any = ""; // 来源url
   private objDetail: any = null; // 植物详情
+  private baseData: any[] = []; // 基础数据
 
   mounted() {
     setTimeout(function() {
@@ -120,11 +121,35 @@ export default class Detail extends Vue {
   }
 
   created() {
+    this.getBaseData();
     this.id = commonUtil.getUrlParam("id", window.location.search);
     this.src = commonUtil.getUrlParam("src", window.location.search);
     if (this.id) {
       this.getZoneDetail();
     }
+  }
+
+  /**
+   * 获取基础数据
+   */
+  async getBaseData() {
+    const res = await authApi.getbasedata({
+      type: 1
+    });
+    if (res.success && res.data) {
+      this.baseData = res.data;
+    }
+  }
+
+  findBaseData(val: string) {
+    if (this.baseData && this.baseData.length > 0) {
+      const filter = this.baseData.filter((p: any) => p.id === parseInt(val));
+      if (filter && filter.length > 0) {
+        return filter[0].text;
+      }
+    }
+
+    return null;
   }
 
   /**
