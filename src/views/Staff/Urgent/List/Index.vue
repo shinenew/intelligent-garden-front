@@ -35,7 +35,7 @@
                 />
               </div>
               <dl>
-                <dt>{{item.zoneName}}}</dt>
+                <dt>{{item.zoneName}}</dt>
                 <dd>
                   <div class="label">
                     <b class="green">{{item.category === 1 ? '自然灾害' : '人为破坏'}}</b>
