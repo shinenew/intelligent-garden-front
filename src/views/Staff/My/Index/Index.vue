@@ -22,7 +22,7 @@
             </router-link>
           </li>
           <li>
-            <a href="javascript:void(0);">
+            <a href="javascript:void(0);" @click="logout">
               <p>退出登录</p>
               <i class="icon">&#xe61e;</i>
             </a>
@@ -39,6 +39,7 @@ import { Component, Vue } from "vue-property-decorator";
 import NavComponent from "@/views/components/StaffNav/Index.vue";
 import { Getter, namespace } from "vuex-class";
 import IUserInfo from "@/constant/DataModel/IUserInfo";
+import { authApi } from '@/api';
 const userModule = namespace("user");
 @Component({
   components: {
@@ -52,8 +53,38 @@ export default class Index extends Vue {
   @userModule.Getter("user")
   private user!: IUserInfo;
 
+  /**
+   * 清空登录信息
+   */
+  @userModule.Action("clearAction")
+  private clearUser() {}
+
   created() {
-    console.log(this.user);
+    // console.log(this.user);
+  }
+
+  /**
+   * 确认注销
+   */
+  private async doLogout() {
+    // console.log('123');
+    const res = await authApi.logout();
+    if (res.success) {
+      alert("退出登录成功");
+      this.clearUser();
+      this.$router.push("/staff");
+    } else {
+      (window as any).alert("退出登录失败", false);
+    }
+  }
+
+  private logout() {
+    (window as any).confirm(
+      "如退出登录，微信账户将与系统解除绑定，下次登录时需要重新验证用户名、密码绑定。如需要保留微信账户与系统的绑定关系，请直接关闭页面返回微信。",
+      this.doLogout,
+      null,
+      "是否确认退出登录？"
+    );
   }
 }
 </script>

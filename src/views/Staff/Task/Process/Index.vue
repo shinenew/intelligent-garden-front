@@ -44,26 +44,41 @@
             v-model="remark"
           />
         </label>
+        <label class="mod">
+          <i>现场图片</i>
+          <em>&nbsp;</em>
+        </label>
         <label class="mod modFull">
-          <i>上传图片</i>
           <em>
-            <span
-              class="uploadPic"
-              v-for="n in uploadImgCount"
-              :key="n"
-            >
-              <a
-                href="javascript:void(0)"
-                v-if="uploadedImgs && uploadedImgs.length >= n"
-              >
-                <img :src="uploadedImgs[n - 1].url" />
-              </a>
+            <span class="uploadPic">
               <a
                 href="javascript:void(0)"
                 class="upContrl"
-                v-else
-              ></a>
+                @click="clickFile"
+              >
+                <input
+                  type="file"
+                  style="display: none"
+                  id="upload-input"
+                  @change="fileChange"
+                /></a>
             </span>
+          </em>
+        </label>
+        <label class="mod modFull">
+          <i><a
+              style="color: red;text-decoration: underline;"
+              v-show="this.uploadImgs && this.uploadImgs.length > 0"
+              @click="clear"
+            >清空重传</a></i>
+          <em>
+            <b
+              class="pic"
+              v-for="(img, i) in uploadImgs"
+              :key="i"
+            >
+              <img :src="img.url" />
+            </b>
           </em>
         </label>
       </div>
@@ -81,7 +96,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import commonUtil from "@/utils/commonUtil";
-import { staffApi } from "@/api";
+import { staffApi, baseinfoApi } from "@/api";
 import moment from "moment";
 
 @Component({
@@ -93,14 +108,7 @@ export default class Process extends Vue {
   private id: any = null;
   private src: any = null;
   private taskDetail: any = null;
-  private uploadImgCount: number = 3;
-  private uploadedImgs: any[] = [
-    {
-      name: "养护现场图片1",
-      url:
-        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588191344538&di=66e0f8011f082c39690a3665660138dc&imgtype=0&src=http%3A%2F%2Fwww.hbghdd.com%2Fuploads%2Fallimg%2F161102%2F1-161102093UK35.jpg"
-    }
-  ]; // 已上传图片
+  private uploadImgs: any[] = []; // 已上传图片
   private remark: string | null = null;
 
   created() {
@@ -131,6 +139,48 @@ export default class Process extends Vue {
   }
 
   /**
+   * 点击上传
+   */
+  private clickFile() {
+    const ele = document.getElementById("upload-input");
+    if (ele) {
+      ele.click();
+    }
+  }
+
+  /**
+   * 选中上传文件
+   */
+  private async fileChange(e: any) {
+    // console.log(this.uploadImgs.length);
+    if (this.uploadImgs && this.uploadImgs.length >= 3) {
+      (window as any).alert("最多只能上传3张图片");
+      return;
+    }
+    // console.log(e);
+    (window as any).loadding("图片上传中");
+    let uploadData = new FormData();
+    uploadData.append("file", e.target.files[0]);
+    uploadData.append("dir", "images");
+
+    // /fastdfs/upload-file
+    // multipart/form-data
+    const res = await baseinfoApi.upload(uploadData);
+    if (res.success && res.data) {
+      // this.config.imgUrl
+      this.uploadImgs.push(res.data);
+    }
+    (window as any).closeLoadding();
+  }
+
+  /**
+   * 清空图片
+   */
+  private clear() {
+    this.uploadImgs = [];
+  }
+
+  /**
    * 完成任务
    */
   async submit() {
@@ -139,7 +189,7 @@ export default class Process extends Vue {
       return;
     }
 
-    if (!this.uploadedImgs || this.uploadedImgs.length === 0) {
+    if (!this.uploadImgs || this.uploadImgs.length === 0) {
       alert("请至少上传一张现场图片");
       return;
     }
@@ -147,7 +197,7 @@ export default class Process extends Vue {
     const res = await staffApi.finishTask({
       taskDetailId: this.id,
       remark: this.remark,
-      fulfillPictures: this.uploadedImgs
+      fulfillPictures: this.uploadImgs
     });
     if (!res.success) {
       alert("完成任务失败：" + res.errMsg);
@@ -158,7 +208,7 @@ export default class Process extends Vue {
     const self = this;
     setTimeout(function() {
       self.back();
-    }, 2000);
+    }, 1000);
   }
 }
 </script>

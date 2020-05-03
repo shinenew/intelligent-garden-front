@@ -15,7 +15,6 @@
     </header>
     <div
       class="bn"
-      v-show="this.objDetail.pictureList && this.objDetail.pictureList.length > 0"
     >
       <div
         class="swiper-container slider"
@@ -85,7 +84,7 @@
         </div>
         <div
           class="video"
-          v-if="this.objDetail.videoList"
+          v-if="this.objDetail.videoList && this.objDetail.videoList.length > 0"
         >
           <video
             preload="auto"
@@ -95,7 +94,7 @@
         </div>
         <div
           class="video"
-          v-if="this.objDetail.audioList"
+          v-if="this.objDetail.audioList && this.objDetail.audioList.length > 0"
         >
           <audio
             preload="auto"

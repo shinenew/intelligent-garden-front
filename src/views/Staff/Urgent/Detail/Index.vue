@@ -123,7 +123,7 @@ export default class Detail extends Vue {
       case 9:
         return "已完成";
       case -1:
-        return "已作废";
+        return "已驳回";
       default:
         return null;
     }

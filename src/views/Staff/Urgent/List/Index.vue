@@ -27,7 +27,7 @@
                 />
                 <img
                   src="~@/assets/img/cor-green.png"
-                  v-else-if="item.status === 9"
+                  v-else-if="item.status === 9 || item.status === -1"
                 />
                 <img
                   src="~@/assets/img/cor-red.png"

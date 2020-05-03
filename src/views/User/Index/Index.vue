@@ -27,7 +27,7 @@
       </a>
       <a href="javascript:void(0);">
         <i class="icon">&#xe62d;</i>
-        <p>植物{{this.statData ? this.statData.plantTotal : null}}颗</p>
+        <p>植物{{this.statData ? this.statData.plantTotal : null}}类</p>
       </a>
       <a href="javascript:void(0);">
         <i class="icon">&#xe62e;</i>

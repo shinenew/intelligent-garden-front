@@ -3,6 +3,7 @@
  */
 enum Urls {
   login = "/auth/login", // 登录
+  logout= "/auth/logout", // 注销
   thirdLogin = "/auth/thirdLogin", // 三方登录
   thirdBind = "/auth/thirdBind", // 三方绑定
   getZoneList = "/wechat/getZonePageList", // 获取园区分页列表
