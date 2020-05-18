@@ -9,13 +9,13 @@ import IUserInfo from "@/constant/DataModel/IUserInfo";
  * 路由导航守卫
  */
 router.beforeEach((to: Route, from: Route, next) => {
-  console.log("-----------router-defend-----------");
-  console.log("--from--");
-  console.log(from);
-  console.log("--to--");
-  console.log(to);
-  console.log(to.fullPath);
-  console.log(router);
+  // console.log("-----------router-defend-----------");
+  // console.log("--from--");
+  // console.log(from);
+  // console.log("--to--");
+  // console.log(to);
+  // console.log(to.fullPath);
+  // console.log(router);
 
   // 权限校验
   // 是否允许匿名
@@ -49,7 +49,7 @@ router.beforeEach((to: Route, from: Route, next) => {
     }
   }
 
-  console.log(allowNext);
+  // console.log(allowNext);
 
   // 将当前路由名称作为页面title
   if (to.meta && to.meta.title) {

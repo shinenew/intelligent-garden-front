@@ -94,9 +94,12 @@
 import { Component, Vue } from "vue-property-decorator";
 import NavComponent from "@/views/components/StaffNav/Index.vue";
 import ListLoadding from "@/views/components/ListLoadding/Index.vue";
+import { Getter, namespace } from "vuex-class";
 import commonUtil from "@/utils/commonUtil";
+import IUserInfo from "@/constant/DataModel/IUserInfo";
 import { staffApi } from "@/api";
 import moment from "moment";
+const userModule = namespace("user");
 
 @Component({
   components: {
@@ -115,6 +118,21 @@ export default class Index extends Vue {
   private loadding: boolean = false;
 
   /**
+   * 登录用户信息
+   */
+  @userModule.Getter("user")
+  private user!: IUserInfo;
+
+  /**
+   * 登录角色
+   */
+  get role() {
+    return this.user && this.user.roles && this.user.roles.length > 0
+      ? this.user.roles[0].id
+      : null;
+  }
+
+  /**
    * 定义注册的监听函数
    */
   private listenerScroll($event: any) {
@@ -122,8 +140,8 @@ export default class Index extends Vue {
   }
 
   created() {
+    console.log(this.role);
     let status = commonUtil.getUrlParam("status", window.location.search);
-    console.log(status);
     if (!status) {
       status = "0";
     }

@@ -2,7 +2,7 @@
   <div class="main loginPg">
     <div class="pageBox">
       <div class="tit">
-        <h6>园林小筑-养护端</h6>
+        <h6>园林小筑-移动端</h6>
       </div>
 
       <div class="form">
@@ -135,17 +135,24 @@ export default class Login extends Vue {
       return;
     }
 
-    if (res.data.loginUserInfo.roles[0].id !== 3) {
-      alert("养护工端只允许养护工登录，请前往PC端登录");
-      return;
-    }
+    // if (res.data.loginUserInfo.roles[0].id !== 3) {
+    //   alert("养护工端只允许养护工登录，请前往PC端登录");
+    //   return;
+    // }
 
     this.setAccessToken({
       accessToken: res.data.token
     });
     this.setUser(res.data.loginUserInfo);
 
-    this.$router.push('/staff');
+    switch (res.data.loginUserInfo.roles[0].id) {
+      case 3: // 养护工
+        this.$router.push("/staff");
+        break;
+      default: // 其他
+        this.$router.push("/staff/workbench");
+        break;
+    }
   }
 }
 </script>

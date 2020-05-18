@@ -77,6 +77,7 @@ header h1{text-align:center;height:1rem;line-height:1rem;}
 .pageBox{width:100%;padding:1.3rem 5% 1.4rem;position: relative;z-index:1;}
 nav{position:fixed;z-index:5;bottom:0;left:0;width:100%;border-top:1px solid #eee;background:#fff;height:1.2rem;}
 nav a{display:inline-block;width:33.3%;text-align:center;height:100%;}
+nav a.two{width:50%;}
 nav a i.icon{color:#a6b2c4;font-size:.5rem;display:block;padding-top:.05rem;}
 nav a p{font-size:.25rem;}
 nav a.cu i.icon{
@@ -464,6 +465,7 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 .workBench .block .bd .list a{display:inline-block;width:33.3%;text-align:center;}
 .workBench .block .bd .list a p{font-size:.25rem;color:#666;}
 
+
 .workBench .taskLnk .bd .list{text-align:center;}
 .workBench .taskLnk .bd .list a b{width:1.5rem;height:1.5rem;display:block;margin:0 auto 5%;line-height:1.5rem;border-radius: 50%;color:#fff;font-weight:normal;font-size:.4rem;}
 .workBench .taskLnk .bd .list a:nth-child(1) b{
@@ -477,6 +479,13 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
     background-image: -webkit-linear-gradient(right, rgb(57, 247, 205, 1), rgba(143, 211, 244, 1));
     background-image: -o-linear-gradient(right, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
     background-image: linear-gradient(to left, rgba(57, 247, 205, 1), rgba(143, 211, 244, 1));
+}
+
+.workBench .taskLnk .bd .list a:nth-child(3) b{
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(224,195,252,1)), to(rgba(142,197,252,1) ));
+  background-image: -webkit-linear-gradient(right, rgba(224,195,252,1), rgba(142,197,252,1));
+  background-image: -o-linear-gradient(right, rgba(224,195,252,1), rgba(142,197,252,1));
+  background-image: linear-gradient(to left, rgba(224,195,252,1), rgba(142,197,252,1));
 }
 .workBench .dangerousLnk .bd .list a i.icon,
 .workBench .parkLnk .bd .list a i.icon
@@ -980,4 +989,73 @@ background-image: -webkit-gradient(linear, right top, left top, from(rgba(57, 24
 
 .dgFooter.col2 a:first-child:after {
   display: none;
+}
+
+.detail-list {
+  width: 100%;
+  height: auto;
+}
+
+.detail-list .title {
+  font-size: 0.32rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(102,102,102,1);
+  text-indent: 0.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.detail-list .title .line {
+  width: 0.1rem;
+  height: 0.4rem;
+  background:linear-gradient(90deg,rgba(143,211,244,1) 0%,rgba(57,247,205,1) 100%);
+  border-radius:3px;
+  float: left;
+}
+
+.detail-list .item {
+  background:rgba(255,255,255,1);
+  box-shadow:0px 2px 10px 0px rgba(171,185,199,0.2);
+  border-radius:8px;
+  padding: 0.4rem;
+  margin-bottom: 0.2rem;
+  position: relative;
+}
+
+.detail-list .item img {
+  position: absolute;
+    z-index: 2;
+    right: -1%;
+    top: -1%;
+    width: 20%;
+}
+
+.detail-list .item .row {
+  width: 100%;
+  font-size: 0.28rem;
+
+}
+
+.detail-list .item .row span {
+  color:rgba(153,153,153,1);
+}
+
+.detail-list .item .row .name {
+  float: left;
+  font-size: 0.28rem;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+}
+
+.detail-list .item .row .phone {
+  /* float: left; */
+  margin-left: 1.8rem;
+  font-size: 0.28rem;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(84,129,220,1);
+  margin-bottom: 0.1rem;
 }

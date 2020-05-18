@@ -1,80 +1,75 @@
 <template>
-  <div class="main urgListPage">
+  <div class="main taskListPage">
     <header>
       <div class="headerCon">
-        <router-link
-          to="/staff/workbench"
+        <a
+          href="javascript:void(0)"
           class="icon arr"
-        >&#xe626;</router-link>
-        <h1>{{this.role === 3 ? '应急历史记录' : '应急流程'}}</h1>
+          @click="back"
+        >&#xe626;</a>
+        <h1>养护计划</h1>
       </div>
     </header>
-    <div
-      class="pageBox"
-      :style="this.role === 3 ? '' : 'padding-top: 1rem'"
-    >
-      <div
-        class="tab"
-        v-if="this.role !== 3"
-      >
+    <div class="pageBox">
+      <div class="tab">
         <ul>
           <li
             :class="status === 0 ? 'cu' : ''"
-            style="width: 33%;"
             @click="changeStatus(0)"
+            style="width: 33%;"
           >
             <span>
-              待审核
+              待指派
             </span>
           </li>
           <li
-            :class="status === 2 ? 'cu' : ''"
+            @click="changeStatus(1)"
+            :class="status === 1 ? 'cu' : ''"
             style="width: 33%;"
-            @click="changeStatus(2)"
           >
             <span>
-              待批示
+              进行中
             </span>
           </li>
           <li
-            :class="status === 3 ? 'cu' : ''"
             style="width: 33%;"
-            @click="changeStatus(3)"
+            @click="changeStatus(9)"
+            :class="status === 9 ? 'cu' : ''"
           >
             <span>
-              待处理
+              已完成
             </span>
           </li>
         </ul>
       </div>
-      <div class="list">
-        <ul v-if="list && list.length > 0">
+      <div class="taskList">
+        <ul v-if="taskList && taskList.length > 0">
           <li
-            v-for="(item, i) in list"
+            v-for="(task,i) in taskList"
             :key="i"
           >
             <a
+              class="btn btnMiddel"
               href="javascript:void(0);"
-              @click="goTo(item.id)"
+              @click="goToDetail(task.id)"
             >
-              <div class="cor">
-                <img :src="'/img/status-' + item.status + '.png'" />
-              </div>
-              <dl>
-                <dt>{{item.zoneName}}</dt>
-                <dd>
-                  <div class="label">
-                    <b class="green">{{item.category === 1 ? '自然灾害' : '人为破坏'}}</b>
-                  </div>
-                  <div class="txt">{{item.intro}}</div>
-                  <div class="date">{{formatDate(item.createTime)}}</div>
-                </dd>
-              </dl>
+              {{task.status === 0 ? '指派' : '查看详情'}}
             </a>
+            <dl>
+              <dt>
+                {{task.zoneName}}
+                <b :class="getDateDiff(task.startDate, task.endDate) < 0 ? 'blue' : ''">{{getTaskDate(task.startDate, task.endDate)}}</b>
+              </dt>
+              <dd>
+                <p>{{task.objName}}</p>
+                <p>{{task.intro}}</p>
+              </dd>
+            </dl>
           </li>
           <!-- 列表加载中 -->
           <ListLoadding :loadding="loadding" />
         </ul>
+
         <!-- 没有数据时 -->
         <div
           class="nodata"
@@ -96,13 +91,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { urgentApi, adminApi } from "@/api";
 import ListLoadding from "@/views/components/ListLoadding/Index.vue";
-import IUserInfo from "@/constant/DataModel/IUserInfo";
-import { Getter, namespace } from "vuex-class";
 import commonUtil from "@/utils/commonUtil";
+import { adminApi } from "@/api";
 import moment from "moment";
-const userModule = namespace("user");
 
 @Component({
   components: {
@@ -110,27 +102,18 @@ const userModule = namespace("user");
   }
 })
 export default class List extends Vue {
-  private list: any[] = [];
+  private status: number = 0;
   private page: number = 1;
   private pageSize: number = 10;
+  private taskList: any[] = [];
   private committing: boolean = false; // 翻页锁定状态
   private loadding: boolean = false;
 
-  private status: any = null;
-
   /**
-   * 登录用户信息
+   * 定义注册的监听函数
    */
-  @userModule.Getter("user")
-  private user!: IUserInfo;
-
-  /**
-   * 登录角色
-   */
-  get role() {
-    return this.user && this.user.roles && this.user.roles.length > 0
-      ? this.user.roles[0].id
-      : null;
+  private listenerScroll($event: any) {
+    this.throttle(this.handleScroll, 500, 500, $event)();
   }
 
   created() {
@@ -139,22 +122,7 @@ export default class List extends Vue {
       status = "0";
     }
     this.status = parseInt(status);
-    this.getList();
-  }
-
-  /**
-   * 切换状态
-   */
-  changeStatus(status: number) {
-    this.status = status;
-    this.getList();
-  }
-
-  /**
-   * 定义注册的监听函数
-   */
-  private listenerScroll($event: any) {
-    this.throttle(this.handleScroll, 500, 500, $event)();
+    this.getTaskList();
   }
 
   /**
@@ -186,7 +154,7 @@ export default class List extends Vue {
       //距离底部100px时，开始加载数据
       if (scHeight - scTop > clHeight + 100) return;
       // 发送请求
-      this.getList(true);
+      this.getTaskList(true);
     }
   }
 
@@ -218,32 +186,24 @@ export default class List extends Vue {
   }
 
   /**
-   * 查询应急列表
+   * 获取任务列表
    */
-  async getList(concat: boolean = false) {
+  async getTaskList(concat: boolean = false) {
     if (!concat) {
       this.page = 1;
-      this.list = [];
+      this.taskList = [];
     }
     this.committing = true;
     this.loadding = true;
-    let res;
-    if (this.role === 3) {
-      res = await urgentApi.getPageList({
-        page: this.page,
-        pageSize: this.pageSize
-      });
-    } else {
-      res = await adminApi.getUrgentPageList({
-        page: this.page,
-        pageSize: this.pageSize,
-        status: this.status
-      });
-    }
+    const res = await adminApi.getTaskPageList({
+      page: this.page,
+      pageSize: this.pageSize,
+      status: this.status
+    });
     this.loadding = false;
     if (res.success && res.data) {
       // this.zoneList = res.data.items;
-      if (this.list && this.list.length >= res.data.total) {
+      if (this.taskList && this.taskList.length >= res.data.total) {
         // 翻到最后一页了
         // console.log("page:" + this.page);
         return;
@@ -252,9 +212,9 @@ export default class List extends Vue {
       this.committing = false; // 释放锁定状态
       if (concat) {
         // 将当前数据拼接到已有数据中
-        this.list = this.list.concat(res.data.items);
+        this.taskList = this.taskList.concat(res.data.items);
       } else {
-        this.list = res.data.items;
+        this.taskList = res.data.items;
       }
     }
 
@@ -262,13 +222,32 @@ export default class List extends Vue {
   }
 
   /**
-   * 跳转到
+   * 切换状态
    */
-  goTo(id: number) {
-    const url = `/staff/urgent/detail?id=${id}&src=${encodeURIComponent(
-      window.location.href
-    )}`;
-    this.$router.push(url);
+  changeStatus(status: number) {
+    this.status = status;
+    this.getTaskList();
+  }
+
+  /**
+   * 获取任务日期
+   */
+  getTaskDate(startDate: number, endDate: number) {
+    if (startDate === endDate) {
+      return this.formatDate(startDate, "MM月DD日");
+    } else {
+      return `${this.formatDate(startDate, "MM月DD日")} ~ ${this.formatDate(
+        endDate,
+        "MM月DD日"
+      )}`;
+    }
+  }
+
+  /**
+   * 获取时间间隔
+   */
+  getDateDiff(endDate: number) {
+    return moment().diff(endDate, "days");
   }
 
   /**
@@ -276,6 +255,17 @@ export default class List extends Vue {
    */
   formatDate(val: number, format: string = "YYYY-MM-DD") {
     return moment(val).format(format);
+  }
+
+  goToDetail(id: number) {
+    const url = `/staff/taskadmin/detail?id=${id}&src=${encodeURIComponent(
+      "/staff/taskadmin/list?status=" + this.status
+    )}`;
+    this.$router.push(url);
+  }
+
+  back() {
+    this.$router.push("/staff/workbench");
   }
 }
 </script>

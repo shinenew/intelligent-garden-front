@@ -79,7 +79,7 @@ export default new Router({
       component: () => import("@/views/Staff/My/About/Index.vue"),
       meta: {
         anonymous: false,
-        allowRole: "3", // 允许访问的角色
+        allowRole: "all", // 允许访问的角色
       }
     },
     {
@@ -88,7 +88,7 @@ export default new Router({
       component: () => import("@/views/Staff/My/Index/Index.vue"),
       meta: {
         anonymous: false,
-        allowRole: "3", // 允许访问的角色
+        allowRole: "all", // 允许访问的角色
       }
     },
     {
@@ -97,7 +97,7 @@ export default new Router({
       component: () => import("@/views/Staff/Workbench/Index.vue"),
       meta: {
         anonymous: false,
-        allowRole: "3", // 允许访问的角色
+        allowRole: "all", // 允许访问的角色
       }
     },
     {
@@ -133,7 +133,7 @@ export default new Router({
       component: () => import("@/views/Staff/Urgent/List/Index.vue"),
       meta: {
         anonymous: false,
-        allowRole: "3", // 允许访问的角色
+        allowRole: "all", // 允许访问的角色
       }
     },
     {
@@ -142,7 +142,7 @@ export default new Router({
       component: () => import("@/views/Staff/Urgent/Detail/Index.vue"),
       meta: {
         anonymous: false,
-        allowRole: "3", // 允许访问的角色
+        allowRole: "all", // 允许访问的角色
       }
     },
     {
@@ -152,6 +152,33 @@ export default new Router({
       meta: {
         anonymous: false,
         allowRole: "3", // 允许访问的角色
+      }
+    },
+    {
+      path: "/staff/taskadmin/list",
+      name: "staff-taskadmin-list",
+      component: () => import("@/views/Staff/TaskAdmin/List/Index.vue"),
+      meta: {
+        anonymous: false,
+        allowRole: "all", // 允许访问的角色
+      }
+    },
+    {
+      path: "/staff/taskadmin/detail",
+      name: "staff-taskadmin-detail",
+      component: () => import("@/views/Staff/TaskAdmin/Detail/Index.vue"),
+      meta: {
+        anonymous: false,
+        allowRole: "all", // 允许访问的角色
+      }
+    },
+    {
+      path: "/staff/taskadmin/add",
+      name: "staff-taskadmin-add",
+      component: () => import("@/views/Staff/TaskAdmin/Add/Index.vue"),
+      meta: {
+        anonymous: false,
+        allowRole: "all", // 允许访问的角色
       }
     }
   ]
