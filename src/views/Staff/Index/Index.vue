@@ -2,15 +2,18 @@
   <div class="main staffHome">
     <header>
       <div class="headerCon">
-        <a
+        <!-- <a
           href="javascript:void(0)"
           class="icon arr"
-        >&#xe626;</a>
+        >&#xe626;</a> -->
         <h1>首页</h1>
       </div>
     </header>
     <div class="pageBox">
-      <div class="scan">
+      <div
+        class="scan"
+        @click="scan"
+      >
         <img src="../../../assets/img/scan.png" />
       </div>
       <div class="tab">
@@ -50,7 +53,7 @@
               class="btn btnMiddel"
               v-if="task.status === 0"
               href="javascript:void(0);"
-              @click="receiveTask(task.id)"
+              @click="receiveTask(task.id, false)"
             >
               领取任务
             </a>
@@ -97,8 +100,9 @@ import ListLoadding from "@/views/components/ListLoadding/Index.vue";
 import { Getter, namespace } from "vuex-class";
 import commonUtil from "@/utils/commonUtil";
 import IUserInfo from "@/constant/DataModel/IUserInfo";
-import { staffApi } from "@/api";
+import { staffApi, authApi, adminApi } from "@/api";
 import moment from "moment";
+import wx from "wx-sdk-ts";
 const userModule = namespace("user");
 
 @Component({
@@ -116,6 +120,8 @@ export default class Index extends Vue {
   private receiveCount: number = 0;
   private committing: boolean = false; // 翻页锁定状态
   private loadding: boolean = false;
+  private wxAppId: string = "wxfb3c5c54aa86b833";
+  private wxJssdkConfig!: any;
 
   /**
    * 登录用户信息
@@ -132,6 +138,41 @@ export default class Index extends Vue {
       : null;
   }
 
+  private async getWxConfig() {
+    // 获取jssdk配置
+    const url = window.location.href;
+    // console.log("当前url：" + url);
+    // console.log("编码后url：" + encodeURIComponent(url));
+    const res = await authApi.getWxJsSdkConfig({
+      url: encodeURIComponent(url)
+    });
+
+    // console.log(res);
+    if (res.success && res.data) {
+      this.wxJssdkConfig = res.data;
+      const self = this;
+
+      // 注入配置
+      wx.config({
+        debug: false,
+        appId: this.wxAppId,
+        timestamp: res.data.timestamp,
+        nonceStr: res.data.nonceStr,
+        signature: res.data.signature,
+        jsApiList: [
+          "onMenuShareTimeline",
+          "onMenuShareAppMessage",
+          "onMenuShareQQ",
+          "onMenuShareWeibo",
+          "onMenuShareQZone",
+          "scanQRCode"
+        ]
+      });
+    } else {
+      (window as any).alert("获取微信jssdk失败", false);
+    }
+  }
+
   /**
    * 定义注册的监听函数
    */
@@ -140,7 +181,8 @@ export default class Index extends Vue {
   }
 
   created() {
-    console.log(this.role);
+    // console.log(this.role);
+
     let status = commonUtil.getUrlParam("status", window.location.search);
     if (!status) {
       status = "0";
@@ -148,6 +190,12 @@ export default class Index extends Vue {
     this.status = parseInt(status);
     this.getTaskList();
     this.getTaskCount();
+
+    var ua = navigator.userAgent.toLowerCase();
+    var isWeixin = ua.indexOf("micromessenger") != -1;
+    if (isWeixin) {
+      this.getWxConfig();
+    }
   }
 
   /**
@@ -272,7 +320,7 @@ export default class Index extends Vue {
   /**
    * 领取任务
    */
-  async receiveTask(taskId: number) {
+  async receiveTask(taskId: number, goDetail: boolean = false) {
     const res = await staffApi.receiveTask({
       id: taskId
     });
@@ -284,6 +332,9 @@ export default class Index extends Vue {
     this.getTaskCount();
     this.getTaskList();
     alert("任务领取成功");
+    if (goDetail) {
+      this.goTo(taskId);
+    }
   }
 
   /**
@@ -330,6 +381,70 @@ export default class Index extends Vue {
       window.location.href + "?status=" + this.status
     )}`;
     this.$router.push(url);
+  }
+
+  scan() {
+    const self = this;
+    wx.scanQRCode({
+      needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+      scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+      success: async function(res) {
+        var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+        // alert(result);
+        // http://wechat.huiyuanlin.cn/buildDetail?id=
+        // http://wechat.huiyuanlin.cn/plantDetail?id=
+        if (result) {
+          if (
+            result.indexOf("buildDetail") >= 0 ||
+            result.indexOf("plantDetail") >= 0
+          ) {
+            // 建筑
+            const objType = result.indexOf("buildDetail") >= 0 ? 2 : 1;
+            const objId = result.replace(
+              "http://wechat.huiyuanlin.cn/plantDetail?id=",
+              ""
+            );
+            const res = await adminApi.getTaskDetailListById({
+              objType: objType,
+              objId: objId
+            });
+            if (res.success && res.data) {
+              const unReceive = res.data.filter((p: any) => p.status === 0);
+              if (unReceive && unReceive.length > 0) {
+                (window as any).confirm(
+                  `该${
+                    objType === 2 ? "建筑" : "植物"
+                  }存在未领取的养护任务，是否立即领取并前往完成？`,
+                  function() {
+                    self.receiveTask(unReceive[0].id, true);
+                  }
+                );
+                return;
+              }
+
+              const unFinish = res.data.filter((p: any) => p.status === 1);
+              if (unFinish && unFinish.length > 0) {
+                (window as any).confirm(
+                  `该${
+                    objType === 2 ? "建筑" : "植物"
+                  }存在未完成的养护任务，是否立即前往完成？`,
+                  function() {
+                    self.$router.push("/staff/task/Process?id=" + objId);
+                  }
+                );
+                return;
+              }
+
+              alert(`该${objType === 2 ? "建筑" : "植物"}没有指派给您的任务`);
+            }
+          } else {
+            alert("该二维码不是植物或建筑二维码");
+          }
+        }
+
+        // 查询该植物/建筑
+      }
+    });
   }
 }
 </script>

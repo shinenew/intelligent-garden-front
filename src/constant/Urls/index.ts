@@ -29,6 +29,10 @@ enum Urls {
   getTaskAdminDetail = "/task/getDetail", // 获取养护任务详情
   assign = "/task/assign", // 指派
   getStaffPageList = "/staff/getPageList", // 获取养护工分页列表
+  getOpenId = "/wechat/getOpenId", // 获取微信openId
+  getWxJsSdkConfig = "/wechat/getSignature", // 获取微信jssdk配置
+  thirdUnBind = "/auth/thirdUnBind", // 三方帐号解绑
+  getTaskDetailListById = "/wechat/getTaskDetailListById", // 根据植物/建筑id获取任务明细列表
 }
 
 export default Urls;

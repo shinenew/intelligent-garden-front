@@ -7,9 +7,11 @@ const CONFIG_STATE_KEY: string = "STORE-STATE-CONFIG";
 const defaultState: {
   baseUrl: string,
   qqService: string | null,
+  wxAppId: string,
 } = {
   baseUrl: process.env.VUE_APP_ENV_WEB_URL,
   qqService: null,
+  wxAppId: "wxfb3c5c54aa86b833"
 };
 
 export default {

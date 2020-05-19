@@ -68,6 +68,7 @@ export default class Index extends Vue {
    */
   private async doLogout() {
     // console.log('123');
+    const res2 = await authApi.thirdUnBind();
     const res = await authApi.logout();
     if (res.success) {
       alert("退出登录成功");

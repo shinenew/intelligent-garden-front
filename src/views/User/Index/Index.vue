@@ -64,8 +64,9 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
-import { zoneApi } from "@/api";
+import { zoneApi, authApi } from "@/api";
 import ListLoadding from "@/views/components/ListLoadding/Index.vue";
+import wx from "wx-sdk-ts";
 
 @Component({
   components: {
@@ -81,6 +82,9 @@ export default class Index extends Vue {
   private loadding: boolean = false;
   private name: string | null = null; // 顶部园区名称
 
+  private wxAppId: string = "wxfb3c5c54aa86b833";
+  private wxJssdkConfig!: any;
+
   /**
    * 定义注册的监听函数
    */
@@ -91,6 +95,47 @@ export default class Index extends Vue {
   created() {
     this.getStat();
     this.getZoneList();
+
+    var ua = navigator.userAgent.toLowerCase();
+    var isWeixin = ua.indexOf("micromessenger") != -1;
+    if (isWeixin) {
+      this.getWxConfig();
+    }
+  }
+
+  private async getWxConfig() {
+    // 获取jssdk配置
+    const url = window.location.href;
+    // console.log("当前url：" + url);
+    // console.log("编码后url：" + encodeURIComponent(url));
+    const res = await authApi.getWxJsSdkConfig({
+      url: encodeURIComponent(url)
+    });
+
+    // console.log(res);
+    if (res.success && res.data) {
+      this.wxJssdkConfig = res.data;
+      const self = this;
+
+      // 注入配置
+      wx.config({
+        debug: false,
+        appId: this.wxAppId,
+        timestamp: res.data.timestamp,
+        nonceStr: res.data.nonceStr,
+        signature: res.data.signature,
+        jsApiList: [
+          "onMenuShareTimeline",
+          "onMenuShareAppMessage",
+          "onMenuShareQQ",
+          "onMenuShareWeibo",
+          "onMenuShareQZone",
+          "scanQRCode"
+        ]
+      });
+    } else {
+      (window as any).alert("获取微信jssdk失败", false);
+    }
   }
 
   /**
@@ -211,7 +256,27 @@ export default class Index extends Vue {
   }
 
   openScan() {
-    alert("等待域名备案联调微信");
+    const self = this;
+    wx.scanQRCode({
+      needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+      scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+      success: async function(res) {
+        var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+        // alert(result);
+        // http://wechat.huiyuanlin.cn/buildDetail?id=
+        // http://wechat.huiyuanlin.cn/plantDetail?id=
+        if (result) {
+          if (
+            result.indexOf("buildDetail") >= 0 ||
+            result.indexOf("plantDetail") >= 0
+          ) {
+            window.location.href = result;
+          } else {
+            alert("该二维码不是植物或建筑二维码");
+          }
+        }
+      }
+    });
   }
 }
 </script>

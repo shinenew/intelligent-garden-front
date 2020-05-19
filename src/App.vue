@@ -6,6 +6,9 @@
     <!-- 加载中 -->
     <Loadding />
 
+    <!-- 微信jssdk -->
+    <WxJsSdk />
+
     <Confirm />
     <router-view />
   </div>
@@ -16,11 +19,13 @@ import { Component, Vue } from "vue-property-decorator";
 import Alert from "./views/components/Alert/Index.vue";
 import Loadding from "./views/components/Loadding/Index.vue";
 import Confirm from "./views/components/Confirm/Index.vue";
+import WxJsSdk from "./views/components/WxJsSdk/Index.vue";
 @Component({
   components: {
     Alert,
     Loadding,
-    Confirm
+    Confirm,
+    WxJsSdk
   }
 })
 export default class App extends Vue {}

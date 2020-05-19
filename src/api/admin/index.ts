@@ -6,6 +6,7 @@ import addTask from "./addTask";
 import getDetail from "./getDetail";
 import assign from "./assign";
 import getStaffList from "./getStaffList";
+import getTaskDetailListById from "./getTaskDetailListById";
 
 export default {
   getTaskPageList,
@@ -15,5 +16,6 @@ export default {
   addTask,
   getDetail,
   getStaffList,
-  assign
+  assign,
+  getTaskDetailListById
 };
