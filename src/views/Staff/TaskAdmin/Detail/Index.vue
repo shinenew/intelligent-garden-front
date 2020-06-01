@@ -113,6 +113,31 @@
           <div class="row">
             <span>完成时间：</span>{{d.finishTime ? formatDate(d.finishTime, 'YYYY-MM-DD HH:mm:ss') : null}}
           </div>
+          <div
+            class="row"
+            v-if="d.status === 9"
+          >
+            <span>完成说明：</span>{{d.remark}}
+          </div>
+          <label
+            class="mod modFull"
+            v-if="d.status === 9"
+          >
+            <i>完成图片</i>
+            <em>
+              <b
+                class="pic"
+                v-for="(img, i ) in d.fulfillPictures"
+                :key="i"
+                style="position: relative;"
+              >
+                <img
+                  :src="img.url"
+                  style="width: 100%; clear: both;"
+                >
+              </b>
+            </em>
+          </label>
         </div>
       </div>
     </div>
