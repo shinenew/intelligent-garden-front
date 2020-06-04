@@ -246,10 +246,18 @@ export default class Process extends Vue {
           ) {
             // 建筑
             const objType = result.indexOf("buildDetail") >= 0 ? 2 : 1;
-            const objId = result.replace(
-              "http://wechat.huiyuanlin.cn/plantDetail?id=",
-              ""
-            );
+            let objId;
+            if (objType === 2) {
+              objId = result.replace(
+                "http://wechat.huiyuanlin.cn/buildDetail?id=",
+                ""
+              );
+            } else {
+              objId = result.replace(
+                "http://wechat.huiyuanlin.cn/plantDetail?id=",
+                ""
+              );
+            }
             if (parseInt(objId, 10) === self.taskDetail.objId) {
               (window as any).confirm(`是否快速完成该任务？`, function() {
                 self.remark = "扫码快速完成任务";
