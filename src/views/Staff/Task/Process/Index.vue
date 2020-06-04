@@ -250,7 +250,7 @@ export default class Process extends Vue {
               "http://wechat.huiyuanlin.cn/plantDetail?id=",
               ""
             );
-            if (objId === self.id) {
+            if (parseInt(objId, 10) === self.taskDetail.objId) {
               (window as any).confirm(`是否快速完成该任务？`, function() {
                 self.remark = "扫码快速完成任务";
                 self.uploadImgs.push({
