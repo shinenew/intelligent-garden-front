@@ -175,6 +175,8 @@ export default class Detail extends Vue {
         return "，三级建筑";
       case "4":
         return "，四级建筑";
+      case "5":
+        return "，";
       default:
         return "";
     }

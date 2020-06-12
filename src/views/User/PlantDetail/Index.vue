@@ -13,9 +13,7 @@
         <h1>{{this.objDetail.name}}</h1>
       </div>
     </header>
-    <div
-      class="bn"
-    >
+    <div class="bn">
       <div
         class="swiper-container slider"
         id="_proSwiper"
@@ -180,6 +178,12 @@ export default class Detail extends Vue {
         return "，渐危保护植物";
       case "3":
         return "，稀有保护植物";
+      case "5":
+        return "，一级保护植物";
+      case "6":
+        return "，二级保护植物";
+      case "7":
+        return "，三级保护植物";
       default:
         return "";
     }
