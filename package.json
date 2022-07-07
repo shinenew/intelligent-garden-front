@@ -15,7 +15,7 @@
     "circular-json": "^0.5.9",
     "core-js": "^2.6.5",
     "jquery": "^3.5.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "swiper": "^5.3.7",
     "vue": "^2.6.6",
     "vue-class-component": "^6.0.0",
